@@ -1,0 +1,132 @@
+body {
+    background-color:#AAA;
+    text-align:center;
+    }
+
+.otree-body {
+        max-width:100%
+    }
+
+.debug-info {
+    display: none;
+}
+
+/* ring */
+
+@keyframes appear {
+    from {opacity:0}
+    to {opacity:1}
+}
+
+.ring_outcome {
+    width: 220px;
+    margin: auto;
+    padding:20px;
+    font-size:10em;
+    text-align: center;
+    animation-name: appear;
+    animation-duration: 750ms;
+    animation-fill-mode: both;
+}
+
+#ring_outcome_0 {
+    color:green;
+}
+#ring_outcome_1 {
+    color:red;
+}
+
+
+/* slider */
+
+.input-group {     max-width: 1000px;  width: 1000px !important; }
+
+.slider { max-width: 1000px;  width: 1000px !important; }
+
+.myslider { max-width: 1000px;  width: 1000px !important; }
+
+#id_response {
+    max-width: 1000px;
+    width: 1000px;
+    margin:auto;
+    box-shadow: none;
+    box-sizing: content-box;
+    display:inline;
+    /*
+    outline: #AAA solid 0px;
+    -webkit-appearance: slider-horizontal;
+    appearance: none;
+    /*outline: none !important;
+    height: 25px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: default;
+    */
+}
+
+/*
+#id_response, #id_response *{ outline: none !important; }
+#id_response:focus {
+        outline:0;
+        outline: none !important;
+        }
+*:focus {
+    outline: none;
+}
+:focus {
+    outline: none !important;
+    cursor: default;
+    outline: green solid 3px;
+}
+*/
+
+#bar {
+    height:100px;
+    width:100px;
+    background-color:red;
+    margin:auto; /* horizontal centering, within containing element */
+    border:1px solid green;
+}
+
+#left0 {
+    display:inline;
+    color:green;
+    font-size:2em;
+}
+
+#right0 {
+    display:inline;
+    color:red;
+    font-size:2em;
+}
+
+#showval {
+    width:100%;
+    padding:30px;
+    text-align: center;
+    font-size:2em;
+}
+
+/*
+Below are all of my sliders
+*/
+
+#slider12a .slider-track-high, #slider12c .slider-track-high {
+	background: green;
+}
+
+#slider12b .slider-track-low, #slider12c .slider-track-low {
+	background: red;
+}
+
+#slider12c .slider-selection {
+	background: yellow;
+}
+
+
+
