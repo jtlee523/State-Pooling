@@ -30,10 +30,46 @@ Let us, for now, make full row height 100px, width 75% of the page
         max-width: 1000px;      
         outline: 3px solid black;
     }
+
+	.grid-container2{
+   		margin: 0 auto;
+        width: 60%; 
+        max-width: 1000px;      
+    }
+    .rowS{
+    	height: 30px;
+    }
+    .partialBox{
+    	width: 42.5%;
+    	outline: 3px solid black;
+    }
+    
+    .whiteBar{
+    	height: 40px;
+    	width: 40%;
+    	background: white;
+    }
+    
+    .blackBar{
+    	height: 40px;
+    	width: 60%;
+    	background: black;
+    }
+    
+    .labelBox{
+    	width: 20%;
+    }
+    
+    .percentBox{
+    	outline:  3px solid blue;
+    	width: 75%;
+    	background: black;
+    }
     
     .evenColumn{
     	width: 35%;
     }
+
     
     .columnSpacer{
     	width: 5%
@@ -251,36 +287,36 @@ Let us, for now, make full row height 100px, width 75% of the page
 	
 	.block-RedB{
 		width: 80%;
-		height: 15%;
+		height: 30%;
 		background-color: black;
 	}
 	
 	.block-RedW{
 		width: 20%;
-		height: 15%;
+		height: 30%;
 		background-color: white;
 	}
 	.block-YellowB{
 		width: 50%;
-		height: 15%;
+		height: 30%;
 		background-color: black;
 	}
 	
 	.block-YellowW{
 		width: 50%;
-		height: 15%;
+		height: 30%;
 		background-color: white;
 	}
 	
 	.block-GreenB{
 		width: 20%;
-		height: 15%;
+		height: 30%;
 		background-color: black;
 	}
 	
 	.block-GreenW{
 		width: 80%;
-		height: 15%;
+		height: 30%;
 		background-color: white;
 	}    
 
