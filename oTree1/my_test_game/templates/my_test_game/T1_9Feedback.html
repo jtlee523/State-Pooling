@@ -1,0 +1,230 @@
+{% extends "global/Page.html" %}
+{% load static otree %}
+
+
+{% block title %}
+	T1 - 9 feedback
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+<!-- Code for  the prior block-->
+
+
+	
+
+<div class = "TextCenter">
+	Given Probabilities of Coloured Urns
+</div>
+<br/>
+
+    <div class="grid-container">
+        <div class="row">
+            <div class="block-red"><p>25%</p></div> 
+            <div class="block-yellow"><p>50%</p></div> 
+            <div class="block-green"><p>25%</p></div> 
+        </div> 
+        
+        
+        <div class="row"></div> <!-- dead row for spacing -->
+        
+        
+        
+        <!--code for ball probabilities -->
+        <div class="row">
+        	<div class="block-ballProbR"> Red Urn Ball Probability
+        		<div class="block-SpaceBar">80%</div>
+        		<div class="block-RedB"></div><div class="block-RedW"></div>
+        	</div> <!-- closes red urn -->
+        	
+        	<div class="block-BPspace"></div>
+        	
+        	<div class="block-ballProbY"> Yellow Urn Ball Probability 
+        		<div class="block-SpaceBar">70%</div>
+        		<div class="block-YellowB"></div><div class="block-YellowW"></div>
+        	</div> <!-- closes yellow urn -->
+        		
+
+        	<div class="block-BPspace"></div>
+        	
+        	
+        	<div class="block-ballProbG"> Green Urn Ball Probability 
+ 				<div class="block-SpaceBar">60%</div>
+        		<div class="block-GreenB"></div><div class="block-GreenW"></div>
+        	</div> <!--closes green urn -->
+        	
+        	<div class="block-BPspace"></div>
+        
+        </div> <!-- with the row -->	
+        
+		
+		
+    </div> <!-- closes container -->
+
+	
+
+
+
+
+        <!-- code for return ball -->
+        <div class="row">
+        	<div class="block-ballProbStandardBlock"> 
+        		<div class="block-SpaceBar"></div>
+        	</div> <!-- closes space -->
+        	
+        	<div class="block-BPspace"></div>
+        	
+        	
+        	<div class="block-ballReturn"> Black Ball
+        			
+        			<div class="circle"></div>
+        			
+        	</div> <!-- closes return ball -->
+        		
+        		
+        	<div class="block-BPspace"></div>
+        	
+        	
+        	<div class="block-ballProbStandardBlock">
+ 				<div class="block-SpaceBar"></div>
+        	</div> <!--closes space -->
+        	
+        	<div class="block-BPspace"></div>
+        </div>
+        	
+
+
+
+
+
+
+
+<br/>
+
+My guess
+<div class="grid-container">
+    
+        <div class="row">
+            <div id= user-red-block class="block-red-dynamic"></div>           
+            <div id= user-yellow-block class="block-yellow-dynamic"></div> 
+            <div id=user-green-block class="block-green-dynamic"></div> 
+        </div> <!-- with row -->
+        
+        
+</div>
+
+</br>
+
+Real Percentages
+<div class="grid-container">
+    
+        <div class="row"> 
+            <div class="block-red"><p>29%</p></div> 
+            <div class="block-yellow"><p>50%</p></div> 
+            <div class="block-green"><p>21%</p></div> 
+        </div> <!-- with row -->
+        
+        
+</div>
+<br/>
+
+<!--making these variables below hidden -->
+
+<p id="RedP"></p>
+<p id="YellowP"></p>
+<p id="GreenP"></p>
+
+<!-- here we collect the data for our experiment-->
+<input type="hidden" name="R9" id="id_R"/>
+<input type="hidden" name="Y9" id="id_Y"/>
+<input type="hidden" name="G9" id="id_G"/>
+{% next_button %}
+{% endblock %}
+
+
+
+
+
+{% block styles %}
+    <link href="{% static "global/bootstrap-slider.css" %}" rel="stylesheet">
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+    <link href="{% static "global/BallProbPages9.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static "global/bootstrap-slider.min.js" %}"></script>
+	<script src="{% static "global/scripts.js" %}"></script>
+	
+    <script>
+    	//document.getElementById("RBResult").innerHTML = localStorage.getItem("RedBlock");
+		//document.getElementById("RBResult").innerHTML = localStorage.RedBlock;
+		//var x = document.cookie;
+		
+		var RedPp = localStorage.getItem("RedBlockResult");
+		var YellowPp = localStorage.getItem("YellowBlockResult");
+		var GreenPp = localStorage.getItem("GreenBlockResult");
+		
+		document.getElementById("RedP").innerHTML=RedPp;
+		document.getElementById("YellowP").innerHTML=YellowPp;
+		document.getElementById("GreenP").innerHTML=GreenPp;
+		
+		//RED DYNAMIC BLOCK
+		var RedText = document.createElement("p");
+		var RedNode = document.createTextNode(RedPp); //this puts the value of the element in
+		RedText.appendChild(RedNode);
+
+		var redElement = document.getElementById("user-red-block"); //edits this id 
+		redElement.setAttribute('style', 'width: ' + RedPp + '%'); //sets the attribute value
+		redElement.appendChild(RedText);
+
+		//YELLOW DYNAMIC BLOCK
+		var YellowText = document.createElement("p");
+		var YellowNode = document.createTextNode(YellowPp); //this puts the value of the element in
+		YellowText.appendChild(YellowNode);
+
+		var yellowElement = document.getElementById("user-yellow-block"); //edits this id 
+		yellowElement.setAttribute('style', 'width: ' + YellowPp + '%'); //sets the attribute value
+		yellowElement.appendChild(YellowText)
+		
+		
+		//GREEN DYNAMIC BLOCK
+		var GreenText = document.createElement("p");
+		var GreenNode = document.createTextNode(GreenPp); //this puts the value of the element in
+		GreenText.appendChild(GreenNode);
+
+		var greenElement = document.getElementById("user-green-block"); //edits this id 
+		greenElement.setAttribute('style', 'width: ' + GreenPp + '%'); //sets the attribute value
+		greenElement.appendChild(GreenText)	
+		
+		
+		var HideRed = document.getElementById("RedP");
+		HideRed.classList.add('hidden');
+		
+		var HideYellow = document.getElementById("YellowP");
+		HideYellow.classList.add('hidden');
+		
+		var HideGreen = document.getElementById("GreenP");
+		HideGreen.classList.add('hidden');
+		
+		
+		//For the variable storing. we get the element and then assign
+		var red_data_1 = document.getElementById("id_R");
+		red_data_1.value = RedPp;
+		
+		var yellow_data_1 = document.getElementById("id_Y");
+		yellow_data_1.value = YellowPp;
+		
+		var green_data_1 = document.getElementById("id_G");
+		green_data_1.value = GreenPp;
+		
+		//https://stackoverflow.com/questions/5927012/javascript-createelement-style-problem
+		//https://stackoverflow.com/questions/6840326/how-can-i-create-and-style-a-div-using-javascript
+		//https://www.digitalocean.com/community/tutorials/how-to-modify-attributes-classes-and-styles-in-the-dom
+		
+    </script>
+{% endblock %}

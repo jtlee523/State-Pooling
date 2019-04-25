@@ -1,0 +1,14 @@
+
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Round {{ player.round_number }} of {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+{{player.Assigned_Red}} is assigned red.
+
+    {% next_button %}
+
+{% endblock %}

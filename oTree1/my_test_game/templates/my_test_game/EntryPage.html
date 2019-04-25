@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load static otree %}
+
+{% block title %}
+	SLIDER TESTING
+{% endblock %}
+
+{% block content %}
+
+	<h4>Instructions</h4>
+	<p>
+		There's a slider
+		Simply pick something
+	</p>
+	
+	<p>
+		At the end, a random round will be chosen for prizes
+	</p>
+	
+	
+	<p>
+		In this round, you are the {{ player.role }}.
+	</p>
+	
+	{% formfield player.age label="Enter your age" %}
+	{% formfield player.name %}
+	
+	{% next_button %}
+	
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "global/Page.html" %}
+{% load static otree %}
+
+
+{% block title %}
+	MEETING WITH ARTHUR RESULTS
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+<input id="ex12c" type="text"/><br/>
+<output id="output"></output>
+<!-- Code for the slider-->
+
+
+First number is:
+</br>
+Second Number is: 
+
+<script>
+document.getElementById("FirstNum")
+</script>
+
+{% next_button %}
+{% endblock %}
+
+
+
+
+
+{% block styles %}
+    <link href="{% static "global/bootstrap-slider.css" %}" rel="stylesheet">
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static "global/bootstrap-slider.min.js" %}"></script>
+	<script src="{% static "global/scripts.js" %}"></script>
+	
+    <script>
+			
+			mySlider = $("#ex12c").slider({ id: "slider12c", min: 0, max: 20, range: true, value: [5, 15] }).on('slide',function(){
+    			var valueString = this.value;
+    			console.log("Static ValueString is: " + valueString);
+    	
+    			var NumArray = valueString.split(','); //splits by column
+    			console.log("NumArray is: " + NumArray);
+    
+   	 			var FirstNum = NumArray[0];
+   				var SecondNum = NumArray[1]; 
+    
+   				console.log("FirstNum is: " + FirstNum);
+    			console.log("SecondNum is: " + SecondNum);
+    			
+    			return NumArray;
+    			
+    			
+   			 })
+   			 
+   			 //for whatever reason, the above works^^^
+
+			
+			//MyValueArray = mySlider.slider('getValue')
+
+			
+			
+			
+			
+			
+			
+			
+			//getSliderValuesStatic("ex12c");
+			
+			
+			//getSliderValuesDynamic("ex12c");
+			
+			//Calls in the value of the sliders
+			
+			//console.log(mySlider.slider('getValue'));
+			//var value = mySlider.bootstrapSlider('getValue'); //code to return the value?
+			
+    </script>
+{% endblock %}

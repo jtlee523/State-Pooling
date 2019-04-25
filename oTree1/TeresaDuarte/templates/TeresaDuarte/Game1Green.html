@@ -1,0 +1,39 @@
+{% extends "global/Page.html" %}
+{% load static otree %}
+
+
+{% block title %}
+	(GREEN) Game #1 - {-{player.round_number}-} out of {-{Constants.num_rounds}-}
+{% endblock %}
+
+{% block content %}
+<div class = "grid-container">
+<div class ="row">
+	<div class = "grid-column">
+		You are the green player.
+		{% formfield player.GreenRoundChoice %} 
+	</div>
+	
+	<div class ="grid-column">
+		AN IMAGE WILL GO HERE
+	</div>	
+</div>
+</div>
+
+
+
+{% next_button %}
+
+
+
+
+{% endblock %}
+
+
+{% block styles %}
+    <link href="{% static "global/TDStyles.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+{% endblock %}

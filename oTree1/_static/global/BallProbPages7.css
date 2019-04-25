@@ -1,0 +1,215 @@
+
+/*
+Let us, for now, make full row height 100px, width 75% of the page
+*/
+
+/* Centering text */
+.textCenter {
+    text-align: center;
+    /* border: 3px solid green; */
+}
+
+.TESTthing {
+	width: 50px;
+	height: 50px;
+	margin: auto;
+	background: blue;
+}
+
+    .hidden {
+        display: none;
+    }
+
+/* grids used for centering, etc. */
+/* Clear floats after the columns */
+    .grid-container{
+   		margin: 0 auto;
+        width: 75%; 
+        max-width: 1200px;      
+    }
+
+    /*-- our cleafix hack -- */ 
+    .row:before,
+    .row:after {
+        content:"";
+        height: 100px;
+        display: table ;
+        clear:both;
+    }
+
+    [class*='block-'] {
+        float: left; 
+        min-height: 1px;     
+        /*-- our gutter -- */
+        /*padding: 12px; 
+        background-color: red;*/  /* this is just for padding */
+    }
+
+    .block-red{ 
+    	width: 25%; 
+    	background-color: red;
+    }
+        
+    .block-yellow{
+    	width: 50%; 
+    	background-color: yellow;
+    }
+    	
+    .block-green{
+    	width: 25%; 
+    	background-color: green;   
+    }
+    
+    
+    .block-redReal{ 
+    	width: 18%; 
+    	background-color: red;
+    }
+        
+    .block-yellowReal{
+    	width: 73%; 
+    	background-color: yellow;
+    }
+    	
+    .block-greenReal{
+    	width: 9%; 
+    	background-color: green;   
+    }
+    
+    
+    .block-red-dynamic{ 
+    	width: 25%; 
+    	background-color: red;
+    }
+        
+    .block-yellow-dynamic{
+    	width: 50%; 
+    	background-color: yellow;
+    }
+    	
+    .block-green-dynamic{
+    	width: 25%; 
+    	background-color: green;   
+    }
+        
+    .block-ballProbR{
+    	width: 30%; 
+    	outline: 5px solid red;
+    }
+
+    
+    .block-ballProbY{
+    	width: 30%; 
+    	outline: 5px solid yellow;
+    }
+    
+    .block-ballProbG{
+    	width: 30%; 
+    	outline: 5px solid green;
+    }
+    
+     .block-BPspace{
+    	width: 5%
+    }
+       
+    .block-ballProbStandardBlock{
+    	width: 30%; 
+    }
+    
+    
+    
+    .block-ballReturn{
+    	width: 30%;
+    	outline: 5px solid black;
+    }
+    
+	.block-SpaceBar{
+		width: 100%;
+		height: 30%;
+	}    
+	.block-TotalBar{
+		width: 100%;
+		height: 30%;
+		background-color: white;
+	}
+	
+	
+	
+	
+	
+	
+	
+	/*-- THIS IS FOR THE BLACK AND WHITE PROBABILITY BARS --*/
+	
+	.block-RedB{
+		width: 40%;
+		height: 30%;
+		background-color: black;
+	}
+	
+	.block-RedW{
+		width: 60%;
+		height: 30%;
+		background-color: white;
+	}
+	.block-YellowB{
+		width: 80%;
+		height: 30%;
+		background-color: black;
+	}
+	
+	.block-YellowW{
+		width: 20%;
+		height: 30%;
+		background-color: white;
+	}
+	
+	.block-GreenB{
+		width: 20%;
+		height: 30%;
+		background-color: black;
+	}
+	
+	.block-GreenW{
+		width: 80%;
+		height: 30%;
+		background-color: white;
+	}    
+
+
+
+
+
+
+
+
+    .outline, .outline *{
+        outline: 1px solid black; 
+    }
+
+    /*-- some extra column content styling --*/
+    [class*='block-'] > p {
+     padding: 0;
+     margin: 0;
+     text-align: center; 
+     color: black; 
+    }
+    
+    
+    .circle {
+ 	 display: block;
+ 	 background: black;
+ 	 border-radius: 50%;
+ 	 height: 80px;
+ 	 width: 80px;
+ 	 margin: auto;
+ 	 
+	}
+	
+#bar {
+    height:100px;
+    width:100px;
+    background-color:red;
+    margin:auto; /* horizontal centering, within containing element */
+    border:1px solid green;
+}

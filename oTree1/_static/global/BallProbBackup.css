@@ -1,0 +1,148 @@
+
+/*
+Let us, for now, make full row height 100px, width 75% of the page
+*/
+
+/* Centering text */
+.textCenter {
+    text-align: center;
+    /* border: 3px solid green; */
+}
+
+
+
+.BallProbSquare{
+	width: 200px;
+	height: 150px
+}
+
+.BallProblSpaceSquare{
+	width: 200px;
+	height: 20px
+
+}  
+
+
+
+.BallProbColumn{
+	float: left;
+	width: 38$;
+}
+
+.spaceColumn {
+    float: left;
+    width: 2%;
+}
+
+.BallProbDiagrams{
+	width: 200px;
+	height: 150px
+}
+
+.BallProbSpace{
+	width: 200px;
+	height: 30px
+}
+
+
+
+.column {
+    float: left;
+    width: 19%;
+}
+
+
+/* grids used for centering, etc. */
+/* Clear floats after the columns */
+    .grid-container{
+   		margin: 0 auto;
+        width: 75%; 
+        max-width: 1200px;      
+    }
+
+    /*-- our cleafix hack -- */ 
+    .row:before,
+    .row:after {
+        content:"";
+        height: 100px;
+        display: table ;
+        clear:both;
+    }
+
+    [class*='block-'] {
+        float: left; 
+        min-height: 1px;     
+        /*-- our gutter -- */
+        /*padding: 12px; 
+        background-color: red;*/  /* this is just for padding */
+    }
+
+    .block-red{ 
+    	width: 20%; 
+    	background-color: red;
+    }
+    
+    .block-yellow{
+    	width: 65%; 
+    	background-color: yellow;
+    }
+    	
+    .block-green{
+    	width: 15%; 
+    	background-color: green;   
+    }
+    
+    .block-ballProbR{
+    	width: 30%; 
+    	outline: 5px solid red;
+    }
+    
+    .block-BPspace{
+    	width: 5%
+    }
+    
+    .block-ballProbY{
+    	width: 30%; 
+    	outline: 5px solid yellow;
+    }
+    
+    .block-ballProbG{
+    	width: 30%; 
+    	outline: 5px solid green;
+    }
+    
+    
+    .block-ballProbStandardBlock{
+    	width: 30%; 
+    	outline: 5px solid green;
+    }
+    
+    .block-ballReturn{
+    	width: 30%;
+    	outline: 5px solid black;
+    }
+    
+	.block-SpaceBar{
+		width: 100%;
+		height: 30%;
+	}    
+	
+	.block-TotalBar{
+		width: 100%;
+		height: 30%;
+		background-color: white;
+	}
+    
+
+
+    .outline, .outline *{
+        outline: 1px solid black; 
+    }
+
+    /*-- some extra column content styling --*/
+    [class*='block-'] > p {
+     padding: 0;
+     margin: 0;
+     text-align: center; 
+     color: black; 
+    }

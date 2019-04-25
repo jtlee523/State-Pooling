@@ -1,0 +1,68 @@
+{% extends "global/Page.html" %}
+{% load static otree %}
+
+
+{% block title %}
+	Task 2 test page
+{% endblock %}
+
+{% block content %}
+<div class = "grid-container">
+<div class ="row">
+	<div class = "grid-column">
+		<img src="{% static "Teresa_Duarte_project/Game_1.jpg" %}" style = "width:90% ; height:90%" />
+	</div>
+	
+	<div class ="grid-half_column">
+		
+		<form>
+  			Points: </br>
+  			<input id = myInput type="number" name="quantity" min="1" max="200">
+		</form>
+	</div>	
+	<div class="grid-half_column">
+		<div class="slidecontainer">
+ 			 <input type="range" min="1" max="200" value="100" class="slider" id="myRange">
+		</div>
+	</div>	
+</div>
+</div>
+
+
+<!-- 
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range
+https://www.w3schools.com/howto/howto_js_rangeslider.asp
+-->
+{% next_button %}
+
+
+
+{% endblock %}
+
+
+{% block styles %}
+    <link href="{% static "global/TDStyles.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+
+
+<script>
+
+	
+	var vertSlider = document.getElementById("myRange");
+	vertSlider.disabled = true;
+	vertSlider.value = '100';
+	
+	var inputVal = document.getElementById("myInput");
+	inputVal.oninput = function(){
+	console.log("input has been changed");
+	if (inputVal.value == null){
+		vertSlider.value = 0;}
+	else{
+		vertSlider.value = inputVal.value;}
+	};
+</script>
+
+{% endblock %}

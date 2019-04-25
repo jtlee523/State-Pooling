@@ -1,0 +1,55 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% comment %}
+{% block title %}
+    Slider task {{ subsession.round_number }}/{{ Constants.num_rounds }}
+{% endblock %}
+{% endcomment %}
+
+{% block content %}
+
+
+
+{% formfield player.response %} <!-- this formfield was defined as a slider in models.py -->
+
+ <div id="bar"></div> <!-- This is the dynamic bar -->
+ 
+
+<div id="showval">{{ slider_start_pct | floatformat:1 }}%</div>
+
+<p>Form field 1<br>
+    Red bar</p>
+    
+    
+{% comment %}
+ <!--{% formfield player.response1 %}-->
+ <!-- <div id="barGreen"></div>-->
+ This didn't seem to work - assuming there's an id_ .. problem in HTML
+{% endcomment %}
+
+    {% next_button %}
+
+
+
+{% endblock %}
+
+
+{% block styles %}
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static "global/scripts.js" %}"></script>
+
+    <script>
+        setSliderOutput("id_response", "showval");
+        makeSpaceBarSubmitForm("form");
+        setUpdateBar("id_response", "bar"); // SILVIO 
+        
+       // setSliderOutput("id_response", "showval");
+        //makeSpaceBarSubmitForm("form");
+        //setUpdateBar("id_response", "barGreen");
+    </script>
+{% endblock %}

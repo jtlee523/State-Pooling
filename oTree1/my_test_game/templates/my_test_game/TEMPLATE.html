@@ -1,0 +1,44 @@
+{% block title %}
+	Template
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+
+{% next_button %}
+{% endblock %}
+
+
+
+
+
+{% block styles %}
+    <link href="{% static "global/bootstrap-slider.css" %}" rel="stylesheet">
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static "global/bootstrap-slider.min.js" %}"></script>
+	<script src="{% static "global/scripts.js" %}"></script>
+	
+    <script>
+        	//$("#ex12a").slider({ id: "slider12a", min: 0, max: 10, value: 5 });
+			//$("#ex12b").slider({ id: "slider12b", min: 0, max: 10, range: true, value: [3, 7] });
+			mySlider = $("#ex12c").slider({ id: "slider12c", min: 0, max: 20, range: true, value: [5, 15] });
+			//Slider with the 3 colors
+			MyValueArray = mySlider.slider('getValue');
+			//getSliderValuesStatic("ex12c");
+			getSliderValuesDynamic("ex12c");
+			//Calls in the value of the sliders
+			
+			//console.log(mySlider.slider('getValue'));
+			//var value = mySlider.bootstrapSlider('getValue'); //code to return the value?
+			
+    </script>
+{% endblock %}

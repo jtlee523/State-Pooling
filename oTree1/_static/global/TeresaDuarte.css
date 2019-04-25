@@ -1,0 +1,185 @@
+body {
+    background-color:#AAA;
+    text-align:center;
+    }
+
+.otree-body {
+        max-width:100%
+    }
+
+.debug-info {
+    display: none;
+}
+
+/* ring */
+
+@keyframes appear {
+    from {opacity:0}
+    to {opacity:1}
+}
+
+.ring_outcome {
+    width: 220px;
+    margin: auto;
+    padding:20px;
+    font-size:10em;
+    text-align: center;
+    animation-name: appear;
+    animation-duration: 750ms;
+    animation-fill-mode: both;
+}
+
+#ring_outcome_0 {
+    color:green;
+}
+#ring_outcome_1 {
+    color:red;
+}
+
+
+/* slider */
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+  transform: rotate(270deg)
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;   
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  color: red;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+#id_response {
+    max-width: 1000px;
+    width: 1000px;
+    margin:auto;
+    box-shadow: none;
+    box-sizing: content-box;
+    display:inline;
+    /*
+    outline: #AAA solid 0px;
+    -webkit-appearance: slider-horizontal;
+    appearance: none;
+    /*outline: none !important;
+    height: 25px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: default;
+    */
+}
+
+/*
+#id_response, #id_response *{ outline: none !important; }
+#id_response:focus {
+        outline:0;
+        outline: none !important;
+        }
+*:focus {
+    outline: none;
+}
+:focus {
+    outline: none !important;
+    cursor: default;
+    outline: green solid 3px;
+}
+*/
+
+#bar {
+    height:100px;
+    width:100px;
+    background-color:red;
+    margin:auto; /* horizontal centering, within containing element */
+    border:1px solid green;
+}
+
+#left0 {
+    display:inline;
+    color:green;
+    font-size:2em;
+}
+
+#right0 {
+    display:inline;
+    color:red;
+    font-size:2em;
+}
+
+#showval {
+    width:100%;
+    padding:30px;
+    text-align: center;
+    font-size:2em;
+}
+
+/*
+Below are all of my sliders
+*/
+
+
+
+/* Centering text */
+.textCenter {
+    text-align: center;
+    /* border: 3px solid green; */
+}
+
+    .hidden {
+        display: none;
+    }
+
+/* grids used for centering, etc. */
+/* Clear floats after the columns */
+    .grid-container{
+   		margin: 0 auto;
+        width: 60%; 
+        max-width: 1000px; 
+           
+    }
+
+    /*-- our cleafix hack -- */ 
+    .row:before,
+    .row:after {
+        content:"";
+        height: 60px;
+        display: table ;
+        clear:both;
+    }
+    
+    .grid-column{
+    	width: 50%;	
+    	
+    }
+    
+    .grid-half_column{
+    	width: 25%;	
+    	
+    }

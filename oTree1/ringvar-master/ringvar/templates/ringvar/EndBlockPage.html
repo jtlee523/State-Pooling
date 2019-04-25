@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    That's it for this box!
+{% endblock %}
+
+{% block content %}
+
+
+<p>The proportion of red rings in this box was: <b>{{pct | floatformat:2}}%</b>.</p>
+
+<p>You gave the following estimates:
+    <ul style="list-style: none;">
+{% for resp in resps %}
+    <li>{{ resp | floatformat:2 }}%</li>
+{% endfor %}
+    </ul>
+</p>
+
+<p>You gained <b>{{points | floatformat:3}} points</b> with this box.</p>
+
+<p>So far you have gained {{ participant.payoff | c }}.</p>
+
+    {% next_button %}
+{% endblock %}
+
+
+{% block styles %}
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static "global/scripts.js" %}"></script>
+    <script>
+        makeSpaceBarSubmitForm("form");
+    </script>
+{% endblock %}

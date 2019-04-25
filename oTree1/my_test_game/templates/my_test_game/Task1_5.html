@@ -1,0 +1,253 @@
+{% extends "global/Page.html" %}
+{% load static otree %}
+
+
+{% block title %}
+	Task #1 - 5
+{% endblock %}
+
+
+
+
+
+{% block content %}
+<!--
+Page attributes:
+- 3 colored horizontal bar for probability info
+- Three black/white bars for probabilities
+- slider
+- numbers
+-->
+
+
+
+
+<!-- Code for  the prior block-->
+
+
+	
+
+<div class = "TextCenter">
+	Given Probabilities of Coloured Urns
+</div> <!--closes TextCenter -->
+<br/>
+
+    <div class="grid-container">
+    
+        <div class="row">
+            <div class="block-red"><p>25%</p></div> 
+            <div class="block-yellow"><p>50%</p></div> 
+            <div class="block-green"><p>25%</p></div> 
+        </div> <!-- with row -->
+        
+        
+        <div class="row"></div> <!-- dead row for spacing -->
+        
+        
+        <!--code for ball probabilities -->
+        <div class="row">
+        	<div class="block-ballProbR"> Red Urn Ball Probability
+        		<div class="block-SpaceBar">100%</div>
+        		<div class="block-RedB"></div><div class="block-RedW"></div>
+        	</div> <!-- closes red urn -->
+        	
+        	<div class="block-BPspace"></div>
+        	
+        	<div class="block-ballProbY"> Yellow Urn Ball Probability 
+        		<div class="block-SpaceBar">50%</div>
+        		<div class="block-YellowB"></div><div class="block-YellowW"></div>
+        	</div> <!-- closes yellow urn -->
+        		
+
+        	<div class="block-BPspace"></div>
+        	
+        	
+        	<div class="block-ballProbG"> Green Urn Ball Probability 
+ 				<div class="block-SpaceBar">50%</div>
+        		<div class="block-GreenB"></div><div class="block-GreenW"></div>
+        	</div> <!--closes green urn -->
+        	
+        	<div class="block-BPspace"></div>
+        
+        </div> <!-- with the row -->	
+        	
+        	
+        <div class="row"></div> <!-- dead row -->
+        	
+        	
+        <!-- code for return ball -->
+        <div class="row">
+        	<div class="block-ballProbStandardBlock"> 
+        		<div class="block-SpaceBar"></div>
+        	</div> <!-- closes space -->
+        	
+        	<div class="block-BPspace"></div>
+        	
+        	
+        	<div class="block-ballReturn"> Black Ball
+        			
+        			<div class="circle"></div>
+        			
+        	</div> <!-- closes return ball -->
+        		
+        		
+        	<div class="block-BPspace"></div>
+        	
+        	
+        	<div class="block-ballProbStandardBlock">
+ 				<div class="block-SpaceBar"></div>
+        	</div> <!--closes space -->
+        	
+        	<div class="block-BPspace"></div>
+        </div>
+        	
+        
+		
+		
+    </div> <!-- closes the contained -->
+
+	
+
+
+
+
+
+<!-- Code for the slider-->
+<div class = "TextCenter">
+	Use the slider to enter your values	
+</div>
+
+<input id="ex12c" type="text"/><br/>
+<output id="output"></output>
+
+
+
+<!-- Code for where the two numbers are being placed-->
+<br/>
+
+<div class="grid-container">
+    <div class="row">
+		
+		<div class="block-ballProbR">
+			Red Percentage:
+			<p id="RedBlock"></p>
+		</div>
+
+        	<div class="block-BPspace"></div>
+		
+		<div class="block-ballProbY">
+			Yellow Percentage:
+			<p id="YellowBlock"></p>
+		</div>
+
+        	<div class="block-BPspace"></div>
+		
+		<div class="block-ballProbG">
+			Green Percentage:
+			<p id="GreenBlock"></p> <!-- putting % afterward makes it a line down -->
+		</div>
+		
+		
+	</div>
+</div>
+
+
+<br/>
+
+
+
+
+
+{% next_button %}
+{% endblock %}
+
+
+
+
+
+{% block styles %}
+    <link href="{% static "global/bootstrap-slider.css" %}" rel="stylesheet">
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+    <link href="{% static "global/BallProbPages5.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static "global/bootstrap-slider.min.js" %}"></script>
+	<script src="{% static "global/scripts.js" %}"></script>
+	
+    <script>
+			
+			mySlider = $("#ex12c").slider({ 
+				id: "slider12c", 
+				min: 0, 
+				max: 100, 
+				range: true, 
+				value: [25, 75], 
+			});
+			
+			//Silly_print was for testing purposes
+			var Silly_print = function() {
+				console.log("silly");
+			};
+			
+			
+			var Value_return = function() { //I dont think I need this **^
+				//console.log("HERE");
+				mySlider.on('slide', Return_value_array)
+				//console.log("HERE2");
+				};
+			
+			
+			var Return_value_array = function() {
+				console.log("CALLED"); //debugging
+				var valueString = mySlider.slider('getValue'); //Takes the values from the slider
+   				console.log("(FROM INTERNAL) Static ValueString is: " + valueString); //logs for debugging
+
+
+   				var FirstNum = valueString[0]; //takes the first number of the array
+   			    var SecondNum = valueString[1];  //takes the second number of the array
+   			    document.getElementById("RedBlock").innerHTML = Math.round( (FirstNum) * (1/100) * (100) ); //assigns RedBlock
+   			    document.getElementById("YellowBlock").innerHTML = Math.round( (SecondNum - FirstNum) * (1/100) * (100) ); //assigns YellowBlock
+   			    document.getElementById("GreenBlock").innerHTML = Math.round( (100 - SecondNum) * (1/100) * (100) ); //assigns GreenBlock
+    
+  			 	console.log("(FROM INTERNAL) FirstNum is: " + FirstNum); //debugging
+  			    console.log("(FROM INTERNAL) SecondNum is: " + SecondNum); //debugging
+				
+				localStorage.setItem("RedBlockResult", Math.round( (FirstNum) * (1/100) * (100) ) );
+				console.log("RED IS: " + localStorage.getItem("RedBlockResult"));
+				
+				localStorage.setItem("GreenBlockResult", Math.round( (100 - SecondNum) * (1/100) * (100) ));
+				console.log("GREEN IS: " + localStorage.getItem("GreenBlockResult"));
+				
+				localStorage.setItem("YellowBlockResult", Math.round( (SecondNum - FirstNum) * (1/100) * (100) ));
+				console.log("YELLOW IS: " + localStorage.getItem("YellowBlockResult"));
+				return;
+			}; 
+			//var x = Value_return(); //I dont think I need this **^
+			
+			var t = mySlider.slider()
+				.on('slide', Return_value_array)
+				.data('slider');
+				
+				
+
+			//var RedP = document.getElementById("RedBlock"); //Takes the value of num1
+			//var YellowP = document.getElementById("YellowBlock"); //Takes the value of num2
+			//var GreenP = document.getElementById("GreenBlock");
+
+			//localStorage.setItem("TEST", int (10));
+			
+			//Calls in the value of the sliders
+			
+			//console.log(mySlider.slider('getValue'));
+			//var value = mySlider.bootstrapSlider('getValue'); //code to return the value?
+			
+			//localStorage.RedBlock = document.getElementById("RedBlock");
+			//localStorage.setItem("GreenBlock", GreenP);
+			//localStorage.setItem("YellowBlock", YellowP);
+			//document.cookie = "RedBall=10";
+    </script>
+    
+    
+{% endblock %}

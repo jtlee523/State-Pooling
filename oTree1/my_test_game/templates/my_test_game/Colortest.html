@@ -1,0 +1,279 @@
+{% extends "global/Page.html" %}
+{% load static otree %}
+
+
+{% block title %}
+	Task 2 - Binary Choice
+{% endblock %}
+
+{% block content %}
+<head>
+<style>
+/*body {
+    background-color: linen;
+    /*Changes the color of the background 
+} */
+
+h2 {
+    color: maroon;
+    margin-left: 40px;
+} 
+
+/*Defining classes*/
+
+.TotalColumn{
+	width:100px;
+	height:500px;
+	Background-color: gray
+}
+
+
+.BallProbSquare{
+	width: 200px;
+	height: 150px
+}
+
+.BallProblSpaceSquare{
+	width: 200px;
+	height: 20px
+
+}
+
+.square1{
+    width: 100px;
+    height: 100px;
+    Background-color: red
+}
+
+.square2{
+    width: 100px;
+    height: 250px;
+    Background-color: green
+}
+
+.square3{
+    width: 100px;
+    height: 150px;
+    Background-color: blue
+}
+
+.column {
+    float: left;
+    width: 19%;
+}
+
+.BallProbColumn{
+	float: left;
+	width: 38$;
+}
+
+.spaceColumn {
+    float: left;
+    width: 2%;
+}
+
+.BallProbDiagrams{
+	width: 200px;
+	height: 150px
+}
+
+.BallProbSpace{
+	width: 200px;
+	height: 30px
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/*
+
+
+<h1 style="color:Tomato;">Hello World</h1>
+for text color
+
+<h1 style="background-color:DodgerBlue;">Hello World</h1>
+for background color
+
+<h1 style="border:2px solid Tomato;">Hello World</h1>
+for border color
+*/
+
+/*
+NOTES
+
+
+
+*/
+</style>
+</head>
+
+
+<div class="row">
+This is where instructions and other text can go.
+	</br>
+	</br>
+</div>
+
+
+
+<div class="row">
+	<div class="Column">
+		Grey Urn
+	</div>
+	
+	
+	<div class="spaceColumn"></div>
+	
+	
+	<div class="Column">
+		Urn Probability
+	</div>	
+	
+	
+	<div class="spaceColumn"></div>
+	
+	
+	<div class="BallProbColumn">
+			Ball Probability
+	</div>
+	
+	<div class="spaceColumn"></div>
+	
+	
+	<div class="Column">
+		My guess
+	</div>
+	
+	</br>
+	</br>
+</div>
+
+
+
+
+<div class="row">
+
+  <div class="Column">
+  		<div class="TotalColumn">Grey Urn Block</div>
+  </div>
+
+  
+<div class="spaceColumn"></div>
+
+  
+  <div class="column"> 
+  		<div class="square1">Title1</div>
+		<div class="square2">Title2</div>
+		<div class="square3">Title3</div>
+  </div>
+  
+
+<div class="spaceColumn"></div>
+
+	<div class="BallProbColumn">
+		
+		<div class="BallProbSquare">
+			test 1
+		</div>
+		
+		
+		<div class="BallProbSquareSpace"></div>
+			
+
+		
+		<div class="BallProbSquare">
+			test 2
+		</div>
+		
+		
+		<div class="BallProbSquareSpace"></div>
+		
+		<div class="BallProbSquare">
+			test 3
+		</div>
+		
+		
+		
+	</div>
+	
+
+  <div class="column">
+  		<div class="square1">test this</div>
+		<div class="square2">test this</div>
+		<div class="square3">test this</div>  
+  </div>
+  
+  <div class="column">
+  		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+ 		   $(function () {
+   		     $("#slider-range").slider({
+     	       range: true,
+            min: 0,
+            max: 500,
+            orientation: "vertical",
+            values: [75, 300],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                $("#id_left").val(ui.values[0]);
+                $("#id_right").val(ui.values[1]);
+            }
+        		});
+       		 $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+          	  " - $" + $("#slider-range").slider("values", 1));
+   		 });
+		</script>
+
+			<p>
+   		 <label for="amount">Slider range:</label>
+   		 <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+		</p>
+	
+				<div id="slider-range"></div>
+					{{ form.left.as_hidden }}
+					{{ form.right.as_hidden }}
+  	
+  </div>
+
+
+  </div>	
+</div>
+<p>
+The left value is {{player.left}}
+<input id="ex12c" type="range"/><br/>
+
+</p>
+
+<br/>
+<br/>
+ <div id="bar"></div> <!-- This is the dynamic bar  // trying this here-->
+ <div id="showval">{{ slider_start_pct | floatformat:1 }}%</div><!-- I think this value is needed for the bar but i'm not sure how to read it off-->
+ 
+{% block styles %}
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+    <link href="{% static "global/bootstrap-slider.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+	<script src="{% static "global/bootstrap-slider.min.js" %}"></script>
+    <script src="{% static "global/scripts.js" %}"></script>
+    <script>
+        //setSliderOutputLeft("id_response", "showval");
+        //makeSpaceBarSubmitForm("form");
+        //setUpdateBarLeft("id_response", "bar"); // How do I get showval to work and thus these functions 
+        $("#ex12a").slider({ id: "slider12a", min: 0, max: 10, value: 5 });
+$("#ex12b").slider({ id: "slider12b", min: 0, max: 10, range: true, value: [3, 7] });
+$("#ex12c").slider({ id: "slider12c", min: 0, max: 10, range: true, value: [3, 7] });
+    </script>
+    
+{% endblock %}
+
+{% next_button %}
+
+{% endblock %}
+

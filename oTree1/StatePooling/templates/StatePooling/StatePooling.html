@@ -1,0 +1,208 @@
+{% extends "global/Page.html" %}
+{% load static otree %}
+
+
+{% block title %}
+	TEST
+{% endblock %}
+
+
+
+
+
+{% block content %}
+<!--
+Page attributes:
+- One container with the follow:
+	3 colored balls and point values
+	gray urn point value
+	
+- radio buttons
+	Choice without extra questions
+	
+	Is it red
+		yes
+		no
+	
+	yellow
+		yes
+		no
+	
+	green
+		yes
+		no
+-->
+<!-- This container is for the images -->
+<div class = "grid-container">
+<div class = "row"> <!-- probably a way to clean this up later -->
+
+	<div class = "mainbox">
+		<div class ="threeballbox">
+			<div class = "spacer"></div>
+			
+				<div id = "RedBallRow" class = "row">
+				<div id = "RedBall" class = "Rcircle"></div>
+					<div class ="textRSmall"> X Points </div>
+				</div>
+			
+			<div class = "spacer"></div>
+			
+				<div id = "YellowBallRow" class = "row">
+				<div id = "YellowBall" class = "Ycircle"></div>
+					<div class ="textRSmall"> Y Points </div>
+				</div>
+			
+			<div class = "spacer"></div>
+			
+				<div id = "GreenBallRow"class = "row">
+				<div id = "GreenBall" class = "Gcircle"></div>
+					<div class ="textRSmall"> Z Points </div>
+				</div>
+			
+			<div class = "spacer"></div>
+		</div>
+	</div>
+	
+	
+	
+	<div class = "mainbox">
+		<div class ="greyballbox">
+		
+			<div class = "RHSspacer"></div>
+			
+				
+		
+				<div id = "GrayBallRow" class = "row">
+				<div id = "GrayBall" class = "Greycircle"></div>
+					<div class ="textRSmall"> X Points </div>
+				</div>
+			
+				<div class = "RHSspacer"></div>
+			
+		
+		</div>
+	</div>
+</div> <!-- closes row -->
+</div> <!--closes container -->
+
+
+
+</br>
+</br>
+
+<!-- This container is for button choices -->
+<div class = "grid-container">
+
+	<!-- This first row is the header row -->
+	<div class = "row">
+		<div class = "TextColumn">
+		Choice without Questions
+		</div>
+		<div class ="ButtonColumn">
+			Colored  |   Gray
+		</div>
+	</div> <!-- closes row-->
+	
+	<div class = "row">
+		<div class = "TextColumn">
+			"Is the ball red?"
+		</div>
+		<div class ="ButtonColumn">
+		</div>
+	</div> <!-- closes row-->
+
+		<div class = "row">
+			<div class = "TextColumn">
+				<div class = "textR"> Yes </div>
+			</div>
+			<div class ="ButtonColumn">
+			{% formfield player.Var1 label = "select one " %}
+			</div>	
+		</div> <!-- closes row-->
+		
+		<div class = "row">
+			<div class = "TextColumn">
+				<div class = "textR"> No </div>
+			</div>
+			<div class ="ButtonColumn">
+			{% formfield player.Var2 label = "select one " %}
+			</div>	
+		</div> <!-- closes row-->
+
+
+
+	<div class = "row">
+		<div class = "TextColumn">
+			"Is the ball yellow?"
+		</div>
+		<div class ="ButtonColumn">
+		</div>
+	</div> <!-- closes row-->
+
+		<div class = "row">
+			<div class = "TextColumn">
+				<div class = "textR"> Yes </div>
+			</div>
+			<div class ="ButtonColumn">
+			{% formfield player.Var3 label = "select one " %}
+			</div>	
+		</div> <!-- closes row-->
+		
+		<div class = "row">
+			<div class = "TextColumn">
+				<div class = "textR"> No </div>
+			</div>
+			<div class ="ButtonColumn">
+			{% formfield player.Var4 label = "select one " %}
+			</div>	
+		</div> <!-- closes row-->
+		
+		
+		
+		
+
+	<div class = "row">
+		<div class = "TextColumn">
+			"Is the ball green?"
+		</div>
+		<div class ="ButtonColumn">
+		</div>
+	</div> <!-- closes row-->
+
+		<div class = "row">
+			<div class = "TextColumn">
+				<div class = "textR"> Yes </div>
+			</div>
+			<div class ="ButtonColumn">
+			{% formfield player.Var5 label = "select one " %}
+			</div>	
+		</div> <!-- closes row-->
+		
+		<div class = "row">
+			<div class = "TextColumn">
+				<div class = "textR"> No </div>
+			</div>
+			<div class ="ButtonColumn">
+			{% formfield player.Var6 label = "select one " %}
+			</div>	
+		</div> <!-- closes row-->
+
+
+
+
+</div> <!-- closes container -->
+{% next_button %}
+{% endblock %}
+
+
+
+
+
+{% block styles %}
+    <link href="{% static "global/StatePooling.css" %}" rel="stylesheet">
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+{% endblock %}

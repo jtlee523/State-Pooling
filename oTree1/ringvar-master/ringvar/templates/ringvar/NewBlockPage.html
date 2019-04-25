@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    New box of rings
+{% endblock %}
+
+{% block content %}
+    {% next_button %}
+{% endblock %}
+
+
+{% block styles %}
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static "global/scripts.js" %}"></script>
+    <script>
+        makeSpaceBarSubmitForm("form");
+    </script>
+{% endblock %}

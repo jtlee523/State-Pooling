@@ -1,0 +1,68 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% comment %}
+{% block title %}
+    Slider task {{ subsession.round_number }}/{{ Constants.num_rounds }}
+{% endblock %}
+{% endcomment %}
+
+{% block content %}
+
+
+<datalist id="tickmarks">
+  <option value="0.001" >
+  <option value="0.999" >
+</datalist>
+
+
+<p>A new ring is drawn:</p>
+
+<div class="ring_outcome" id="ring_outcome_{{ player.outcome }}">
+    O
+</div>
+
+{% comment %}
+    {% formfield player.response %}
+{% endcomment %}
+<div class="form-group required">
+    <div class="controls  field-response">
+        <div id="left0">•</div>
+        <input type="range" name="response" value="{{slider_start}}" step="0.001" list="tickmarks" class="myslider form-control" min="0.001" max="0.999" required="" id="id_response">
+        <div id="right0">•</div>
+    </div>
+</div>
+
+
+{% comment %} <div id="bar"></div> <!-- SILVIO -->{% endcomment %}
+
+<div id="showval">{{ slider_start_pct | floatformat:1 }}%</div>
+
+<p>Please provide your best estimate of the proportion of red rings.<br>
+    Then, press the space bar to confirm, and a new ring will be drawn.</p>
+
+
+{% comment %}
+    {% next_button %}
+{% endcomment %}
+
+
+{% endblock %}
+
+
+{% block styles %}
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static "global/scripts.js" %}"></script>
+
+    <script>
+        setSliderOutput("id_response", "showval");
+        makeSpaceBarSubmitForm("form");
+        {% comment %} setUpdateBar("id_response", "bar"); // SILVIO {% endcomment %}
+
+
+    </script>
+{% endblock %}

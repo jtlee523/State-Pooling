@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block content %}
+
+    <p>Participant ID: {{ participant.id }}</p>
+
+    {% formfields %}
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles %}
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+    <style>body {text-align:left;}</style>
+{% endblock %}

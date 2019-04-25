@@ -1,0 +1,60 @@
+{% extends "global/Page.html" %}
+{% load static otree %}
+
+
+{% block title %}
+	General Info and Consent
+{% endblock %}
+
+
+
+
+
+{% block content %}
+<!--
+Page attributes:
+- Consent and General info
+- Next button
+-->
+
+
+<div class = "TextCenter">
+	Consent, general info
+</div> <!--closes TextCenter -->
+
+
+</br>
+
+<input id="ex17b" type="text"/>
+<output id="output"></output>
+
+<button class="btn btn-primary btn-large">I consent</button>
+
+<input id="ex12a" type="text"/><br/>
+{% endblock %}
+
+
+
+
+
+
+{% block styles %}
+    <link href="{% static "global/TDStyles.css" %}" rel="stylesheet">
+    <link href="{% static "global/bootstrap-slider.css" %}" rel="stylesheet">
+{% endblock %}
+{% block scripts %}
+<script src="{% static "global/bootstrap-slider.min.js" %}"></script> 
+<script src="{% static "global/scripts.js" %}"></script>
+<script>
+	$("#ex12a").slider({ id: "slider12a", min: 0, max: 10, value: 5, orientation: 'vertical',});
+	
+	$("#ex17b").slider({
+	min: 0,
+	max: 10,
+	value: 0,
+	orientation: 'vertical',
+	tooltip_position:'left',
+	});
+
+</script>
+{% endblock %}

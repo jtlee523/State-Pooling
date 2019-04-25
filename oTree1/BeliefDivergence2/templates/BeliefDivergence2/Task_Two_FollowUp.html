@@ -1,0 +1,156 @@
+{% extends "global/Page.html" %}
+{% load static otree %}
+
+
+{% block title %}
+	Point Feedback - {{player.round_number}} out of {{Constants.num_rounds}}
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+<!-- Code for  the prior block-->
+
+
+	
+
+<br/>
+
+    <div class="grid-container">
+        
+        <!--code for Reporting Points -->
+        <div class="row">
+        	<div class="block-ballProbR"> Red Urn Points
+        		<div class="block-SpaceBar">{{player.Red_Points}}</div>
+        	</div> <!-- closes red urn -->
+        	
+        	<div class="block-BPspace"></div>
+        	
+        	<div class="block-ballProbY"> Yellow Urn Points
+        		<div class="block-SpaceBar">{{player.Yellow_Points}}</div>
+        	</div> <!-- closes yellow urn -->
+        		
+
+        	<div class="block-BPspace"></div>
+        	
+        	
+        	<div class="block-ballProbG"> Green Urn Points 
+ 				<div class="block-SpaceBar">{{player.Green_Points}}</div>
+        	</div> <!--closes green urn -->
+        	
+        	<div class="block-BPspace"></div>
+        
+        </div> <!-- with the row -->	
+        
+        
+        
+        
+        <div class="row">
+        	<div class="block-ballProbStandardBlock"> 
+        		<div class="block-SpaceBar"></div>
+        	</div> <!-- closes space -->
+        	
+        	<div class="block-BPspace"></div>
+        	
+        	
+        	<div  class="block-GrayPoints"> Gray Urn Points
+        		<div class="block-SpaceBar">{{player.Gray_Points}}</div>
+        	
+			</div> 
+        		
+        		
+        	<div class="block-BPspace"></div>
+        	
+        	
+        	<div class="block-ballProbStandardBlock">
+ 				<div class="block-SpaceBar"></div>
+        	</div> <!--closes space -->
+        	
+        	<div class="block-BPspace"></div>
+        </div>
+        
+        
+        
+        
+        
+        <!-- code for results -->
+        <div class="row">
+        	<div class="block-ballProbStandardBlock"> 
+        		<div class="block-SpaceBar"></div>
+        	</div> <!-- closes space -->
+        	<div class="block-BPspace"></div>
+        	
+        	
+        	<div id="ReturnBlock" class="block-ballReturn">
+        	</div> <!-- closes return ball -->
+        		
+        		
+        	<div class="block-BPspace"></div>
+        	<div class="block-ballProbStandardBlock">
+ 				<div class="block-SpaceBar"></div>
+        	</div> <!--closes space -->
+        	<div class="block-BPspace"></div>
+        
+    </div> <!-- closes container -->
+
+
+
+
+
+</br>
+
+<!--making these variables below hidden -->
+<!-- I don't thik this is needed right now
+<p id="RedP"></p>
+<p id="YellowP"></p>
+<p id="GreenP"></p> -->
+
+<!-- here we collect the data for our experiment-->
+<!--
+<input type="hidden" name="Red_Probability_guess" id="id_RedGuess"/>
+<input type="hidden" name="Yellow_Probability_guess" id="id_YellowGuess"/>
+<input type="hidden" name="Green_Probability_guess" id="id_GreenGuess"/>
+<input type="hidden" name="Accuracy" id="id_Accuracy"/>
+-->
+{% next_button %}
+{% endblock %}
+
+
+
+
+
+{% block styles %}
+    <link href="{% static "global/bootstrap-slider.css" %}" rel="stylesheet">
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+    <link href="{% static "global/Task2.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static "global/bootstrap-slider.min.js" %}"></script>
+	<script src="{% static "global/scripts.js" %}"></script>
+	
+    <script>
+				
+		//This tells the player which urn they picked
+		var UrnChoice = document.createElement("p");
+		//If/Else creates the text within the UrnChoice element
+		if( {{player.isGray}} == 1){
+			console.log("GRAY");
+			var UrnNode = document.createTextNode("You picked the Gray Urn"); 
+		}	
+		
+		else{
+			console.log("COLORED");
+			var UrnNode = document.createTextNode("You Picked the Colored Urn");
+		}
+		UrnChoice.appendChild(UrnNode);
+		
+		var ReturnDetails = document.getElementById("ReturnBlock"); //edits this id 
+		ReturnDetails.appendChild(UrnChoice)
+
+    </script>
+{% endblock %}

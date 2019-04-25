@@ -1,0 +1,332 @@
+{% extends "global/Page.html" %}
+{% load static otree %}
+
+
+{% block title %}
+	Task #2 - {{player.round_number}} out of {{Constants.num_rounds}}
+{% endblock %}
+
+
+
+
+
+{% block content %}
+<!--
+Page attributes:
+- 3 colored horizontal bar for probability info
+- Three black/white bars for probabilities
+- slider
+- numbers
+-->
+
+
+
+
+<!-- Code for  the prior block-->
+
+
+	
+
+<div class = "TextCenter">
+	Given Probabilities of Coloured Urns
+</div> <!--closes TextCenter -->
+<br/>
+
+
+    <div class="grid-container">
+    
+    	<div class="row">
+    		<div class="block-GrayBar"><p>{{ player.Gray_Points}} Points</p></div>
+    	</div>
+    	
+        <div class="row">
+            <div id='Red_Urn' class="block-red"><p>{{player.Red_Points}} Points</p></div> 
+            <div id='Yellow_Urn' class="block-yellow"><p>{{player.Yellow_Points}} Points</p></div> 
+            <div id='Green_Urn' class="block-green"><p>{{player.Green_Points}} Points</p></div> 
+        </div> <!-- with row -->
+        
+        
+        <div class="row"></div> <!-- dead row for spacing -->
+        
+        
+        <!--code for ball probabilities -->
+        <div class="row">
+        	<div class="block-ballProbR"> Red Urn Ball Probability
+        		<div class="block-SpaceBar" id="Red_Ball_Container"></div>
+        		<div id = "RedUrn_Black" class="block-RedB"></div><div id = "RedUrn_White" class="block-RedW"></div>
+        		<div class="block-SpaceBar"></br></div>
+        	</div> <!-- closes red urn -->
+        	
+        	<div class="block-BPspace"></div>
+        	
+        	<div class="block-ballProbY"> Yellow Urn Ball Probability 
+        		<div class="block-SpaceBar" id="Yellow_Ball_Container"></div>
+        		<div id = "YellowUrn_Black" class="block-YellowB"></div><div id = "YellowUrn_White" class="block-YellowW"></div>
+        		<div class="block-SpaceBar"></br></div>
+        	</div> <!-- closes yellow urn -->
+        		
+
+        	<div class="block-BPspace"></div>
+        	
+        
+        	<div class="block-ballProbG"> Green Urn Ball Probability 
+ 				<div class="block-SpaceBar" id="Green_Ball_Container"></div>
+        		<div id = "GreenUrn_Black" class="block-GreenB"></div><div id = "GreenUrn_White" class="block-GreenW"></div>
+        		<div class="block-SpaceBar"></br></div>
+        	</div> <!--closes green urn -->
+        	
+        	<div class="block-BPspace"></div>
+        
+        </div> <!-- with the row -->	
+        	
+        	
+
+        	
+        	
+        <!-- code for return ball -->
+        <div class="row">
+        	<div class="block-ballProbStandardBlock"> 
+        		<div class="block-SpaceBar"></div>
+        	</div> <!-- closes space -->
+        	
+        	<div class="block-BPspace"></div>
+        	
+        	
+        	<div  class="block-ballReturn" id="BallReturn_Container"></br>
+        			
+        			<div id = "ball" class="circle"></div>
+        			
+        	</div> <!-- closes return ball -->
+        		
+        		
+        	<div class="block-BPspace"></div>
+        	
+        	
+        	<div class="block-ballProbStandardBlock">
+ 				<div class="block-SpaceBar"></div>
+        	</div> <!--closes space -->
+        	
+        	<div class="block-BPspace"></div>
+        </div>
+        	
+        
+		
+		
+    </div> <!-- closes the contained -->
+
+	
+
+
+
+
+
+<!-- Code for the slider-->
+<div class = "TextCenter">
+	Use the slider to enter your values	
+</div>
+
+<input id="ex12c" type="text"/><br/>
+<output id="output"></output>
+
+
+
+<!-- Code for where the two numbers are being placed-->
+<br/>
+
+<div class="grid-container">
+    <div class="row">
+		
+		<div class="block-ballProbR">
+			Red Percentage:
+			<p id="RedBlock"></p>
+		</div>
+
+        	<div class="block-BPspace"></div>
+		
+		<div class="block-ballProbY">
+			Yellow Percentage:
+			<p id="YellowBlock"></p>
+		</div>
+
+        	<div class="block-BPspace"></div>
+		
+		<div class="block-ballProbG">
+			Green Percentage:
+			<p id="GreenBlock"></p> <!-- putting % afterward makes it a line down -->
+		</div>
+		
+		
+	</div>
+</div>
+
+
+<br/>
+
+<!-- this is for gray vs not gray-->
+
+<p><b>Select the Gray or Colored Urns?</b></p> <div>
+	<button id="GRAYbutton" name="isGray" value="1" class="btn btn-primary btn-large">Gray</button>
+	<button name="isGray" value="0" class="btn btn-primary btn-large">Colored</button> </div>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+{% block styles %}
+    <link href="{% static "global/bootstrap-slider.css" %}" rel="stylesheet">
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+    <link href="{% static "global/Task2.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static "global/bootstrap-slider.min.js" %}"></script> 
+	<script src="{% static "global/scripts.js" %}"></script>
+	
+    <script>
+			
+			mySlider = $("#ex12c").slider({ //defining the slider. Data comes from bootstrap-slider.css
+				id: "slider12c", 
+				min: 0, 
+				max: 100, 
+				range: true, 
+				value: [25, 75], 
+			});
+			
+		
+		
+		//Setting the urn text, attributes, etc. First two lines create the box
+		//Next four lines create the text.
+		var Red_Urn = document.getElementById("Red_Urn");
+		Red_Urn.setAttribute('style', 'width: ' + ({{player.Red_Urn_Given}}*100) + '%');
+		var Red_Urn_Text = document.createElement("p");
+		var Red_Urn_Node = document.createTextNode({{player.Red_Urn_Given}}*100 + '%'); //this puts the value of the element in
+		Red_Urn_Text.appendChild(Red_Urn_Node);
+		Red_Urn.appendChild(Red_Urn_Text);
+		
+		var Yellow_Urn = document.getElementById("Yellow_Urn");
+		Yellow_Urn.setAttribute('style', 'width: ' + ({{player.Yellow_Urn_Given}}*100) + '%');
+		var Yellow_Urn_Text = document.createElement("p");
+		var Yellow_Urn_Node = document.createTextNode({{player.Yellow_Urn_Given}}*100 + '%'); //this puts the value of the element in
+		Yellow_Urn_Text.appendChild(Yellow_Urn_Node);
+		Yellow_Urn.appendChild(Yellow_Urn_Text);
+		
+		var Green_Urn = document.getElementById("Green_Urn");
+		Green_Urn.setAttribute('style', 'width: ' + ({{player.Green_Urn_Given}}*100) + '%');
+		var Green_Urn_Text = document.createElement("p");
+		var Green_Urn_Node = document.createTextNode({{player.Green_Urn_Given}}*100 + '%'); //this puts the value of the element in
+		Green_Urn_Text.appendChild(Green_Urn_Node);
+		Green_Urn.appendChild(Green_Urn_Text);
+		
+		
+		
+		//===========================================================================
+		//For the ballProb blocks that indicate black/white ball ratios
+		//TEXT APPENDING
+		var RedBall_Container = document.getElementById("Red_Ball_Container");
+		var Red_Ball_Text = document.createElement("p");
+		var Red_Ball_Node = document.createTextNode({{player.Assigned_Red}}*100 + '%'); //this puts the value of the element in
+		Red_Ball_Text.appendChild(Red_Ball_Node);
+		RedBall_Container.appendChild(Red_Ball_Text);
+		
+		var YellowBall_Container = document.getElementById("Yellow_Ball_Container");
+		var Yellow_Ball_Text = document.createElement("p");
+		var Yellow_Ball_Node = document.createTextNode({{player.Assigned_Yellow}}*100 + '%'); //this puts the value of the element in
+		Yellow_Ball_Text.appendChild(Yellow_Ball_Node);
+		YellowBall_Container.appendChild(Yellow_Ball_Text);
+		
+		var GreenBall_Container = document.getElementById("Green_Ball_Container");
+		var Green_Ball_Text = document.createElement("p");
+		var Green_Ball_Node = document.createTextNode({{player.Assigned_Green}}*100 + '%'); //this puts the value of the element in
+		Green_Ball_Text.appendChild(Green_Ball_Node);
+		GreenBall_Container.appendChild(Green_Ball_Text);
+		
+		
+		
+		//===========================================================================
+			
+		//Here I set a variable in script for the id
+		//then i assign it's width using the assigned values
+		var Red_BlackProb = document.getElementById("RedUrn_Black"); //edits this id 
+		Red_BlackProb.setAttribute('style', 'width: ' + ({{player.Assigned_Red}}*100) + '%'); //sets the attribute value
+		
+		var Yellow_BlackProb = document.getElementById("YellowUrn_Black"); //edits this id 
+		Yellow_BlackProb.setAttribute('style', 'width: ' + ({{player.Assigned_Yellow}}*100) + '%'); //sets the attribute value
+		
+		var Green_BlackProb = document.getElementById("GreenUrn_Black"); //edits this id 
+		Green_BlackProb.setAttribute('style', 'width: ' + ({{player.Assigned_Green}}*100) + '%'); //sets the attribute value
+		
+		
+		//I do the same thing here for the white bars
+		var Red_WhiteProb = document.getElementById("RedUrn_White"); //edits this id 
+		Red_WhiteProb.setAttribute('style', 'width: ' + (100-{{player.Assigned_Red}}*100) + '%'); //sets the attribute value
+		
+		var Yellow_WhiteProb = document.getElementById("YellowUrn_White"); //edits this id 
+		Yellow_WhiteProb.setAttribute('style', 'width: ' + (100-{{player.Assigned_Yellow}}*100) + '%'); //sets the attribute value
+		
+		var Green_WhiteProb = document.getElementById("GreenUrn_White"); //edits this id 
+		Green_WhiteProb.setAttribute('style', 'width: ' + (100-{{player.Assigned_Green}}*100) + '%'); //sets the attribute value
+			
+		//for the ball and the text Given_Ball
+		var Ball = document.getElementById("ball");
+		var BallContainer = document.getElementById("BallReturn_Container");
+		var Ball_Text = document.createElement("p");
+		//var Given_Ball = document.getElementById("block-ballReturn");
+		if( {{player.isBlackBall}} == 1){
+			Ball.setAttribute('style','background:  white');
+			console.log("WHITE BALL");
+			var Ball_Node = document.createTextNode('White Ball');
+		}	
+		
+		else{
+			console.log("BLACK BALL");
+			var Ball_Node = document.createTextNode('Black Ball');	
+		}
+		Ball_Text.appendChild(Ball_Node);
+		BallContainer.appendChild(Ball_Text);
+	
+			
+			
+			var Return_value_array = function() {
+				console.log("CALLED"); //debugging
+				var valueString = mySlider.slider('getValue'); //Takes the values from the slider
+   				console.log("(FROM INTERNAL) Static ValueString is: " + valueString); //logs for debugging
+
+
+   				var FirstNum = valueString[0]; //takes the first number of the array
+   			    var SecondNum = valueString[1];  //takes the second number of the array
+   			    document.getElementById("RedBlock").innerHTML = Math.round( (FirstNum) * (1/100) * (100) )+ '%'; //assigns RedBlock
+   			    document.getElementById("YellowBlock").innerHTML = Math.round( (SecondNum - FirstNum) * (1/100) * (100) )+ '%'; //assigns YellowBlock
+   			    document.getElementById("GreenBlock").innerHTML = Math.round( (100 - SecondNum) * (1/100) * (100) )+ '%'; //assigns GreenBlock
+    
+  			 	console.log("(FROM INTERNAL) FirstNum is: " + FirstNum); //debugging
+  			    console.log("(FROM INTERNAL) SecondNum is: " + SecondNum); //debugging
+				
+				localStorage.setItem("RedBlockResult", Math.round( (FirstNum) * (1/100) * (100) ) );
+				console.log("RED IS: " + localStorage.getItem("RedBlockResult"));
+				
+				localStorage.setItem("GreenBlockResult", Math.round( (100 - SecondNum) * (1/100) * (100) ));
+				console.log("GREEN IS: " + localStorage.getItem("GreenBlockResult"));
+				
+				localStorage.setItem("YellowBlockResult", Math.round( (SecondNum - FirstNum) * (1/100) * (100) ));
+				console.log("YELLOW IS: " + localStorage.getItem("YellowBlockResult"));
+				return;
+			}; 
+			
+			
+			
+			
+			var t = mySlider.slider() //This deals with the sliding
+				.on('slide', Return_value_array)
+				.data('slider');
+				
+
+    </script>
+    
+    
+{% endblock %}

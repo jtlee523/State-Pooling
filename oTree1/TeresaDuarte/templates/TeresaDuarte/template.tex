@@ -1,0 +1,261 @@
+\documentclass[journal,transmag]{IEEEtran}
+
+\usepackage{lipsum}
+\usepackage{graphicx} %package for graphic imports
+\graphicspath{ {./images/} } %For image directory
+%\usepackage{cite}
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+\else
+\fi
+\usepackage[cmex10]{amsmath}
+
+\begin{document}
+
+\title{Velocity, Acceleration, and $g$}
+
+
+\author{\IEEEauthorblockN{Joseph Lee}}% <-this % stops an unwanted space
+
+
+
+\maketitle
+
+
+\IEEEdisplaynontitleabstractindextext
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+% Delete lipsum and put introduction here.
+\indent In daily life, one can observe motion at any point in time. There are four main, related quantities we observe when dealing with motion: time ($t$), position ($\Vec{r}$), velocity ($\Vec{v}$), and acceleration ($\Vec{a}$). Note that while $t$ is a scalar value starting at some time zero $t_0$, the other three values are vectors. These three vector quantities all have both a scalar magnitude and a direction associated with them. 
+
+\indent The following differential equations represent the relationships between $t$, $\Vec{r}$, $\Vec{v}$, and $\Vec{a}$:
+
+
+\begin{equation}
+    \Vec{v} =  \frac{d\Vec{r}}{dt} 
+\end{equation}
+\begin{equation}
+     \Vec{a} = \frac{d\Vec{v}}{dt} = \frac{d^2\Vec{r}}{dt^2}   
+\end{equation}
+
+\indent Equation (1) above tell us that the time rate of change of position is equal to velocity. Equation (2) states that the time rate of change of velocity is acceleration, and the second derivative of position with respect to time is also acceleration.
+
+Given the kinematic equations (1) and (2), with information about position and time, we can compute vector equations for velocity and acceleration. On the other hand, if we only have information regarding acceleration or velocity, we can use calculus to derive integral relationships between the quantities. (We assume constant acceleration, $\Vec{a}$, for equation(3)
+    
+\begin{equation}
+    \Vec{v}(t) = \int \Vec{a} dt = \Vec{v_o} + \Vec{a}t
+\end{equation}
+\begin{equation}
+    \Vec{x}(t) = \int \Vec{v}(t) dt = \int \Vec{v_0} + \Vec{a}t dt = \Vec{x_o} + \Vec{v_0}t + \frac{1}{2} \Vec{a}t^2 
+\end{equation}
+
+Thus, a clear relationship between the four quantities have been established. These equations of motions are what motivate this experiment. There are two parts to this experiment. In part one, we push a rider on a track under constant velocity and no acceleration. We measure the coefficient of restitution (to be described later) to measure elasticity and confirm constant acceleration. In part two, we attempt to measure the constant $\Vec{g}$ by raising the the track of the rider. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\section{Method}
+\begin{center}
+    \subsection{Preliminaries}
+\end{center} %  FIX WHATEVER IS WRONG WITH THIS TAG %%%%%%%%
+
+\indent Before beginning the experiment, certain precautions needed to be taken in order to guarantee the most accurate results. The air track needed to be completely parallel to the ground in order to ensure no influence from gravity during part I. To do this, a rider was placed on the track and it's movement was observed. If it tended in any direction (hence picking up a nonzero speed) the right foot of the track was adjusted via the foot knob to center the track.
+\indent A ranger was placed at the right end of the track. The ranger would use sonic waves to measure the position of the rider in constant intervals. To ensure that the ranger was properly aligned, the following tests were ran. Firstly, we placed out a hand and walked in a direction parallel to the ranger. This would check to see if the ranger was measuring our movement. Secondly, we placed a rider on the track and pushed the rider to the left, away from the ranger. Measurements were stopped before it hit the left wall. Since the track was level, there should be no acceleration, implying a flat velocity curve and a linear position curve. Once these graphs were observed, we began part I.
+
+\begin{figure}[h]
+\caption{Main table setup for Part I [1]}
+\centering
+\includegraphics[width=0.3\textwidth]{"Table with Rider and stuff".png}
+\end{figure}
+
+
+\begin{center} 
+    \subsection{Part I. Constant Velocity, Zero Acceleration} 
+\end{center}
+\indent The setup was as follows: Like above, the ranger  was placed on the left side of the track such that the larger position markings (i.e. 200cm) were close to the ranger. The ranger was also put into cart mode. The left side of the track had a rubber band to allow for elastic collisions. 
+
+\indent The rider was placed on the track at the 150cm mark at the beginning of every trial. In each trial, we began collecting data on the VelocityLab software and gave the rider a gentle push toward the left. The ranger would travel to the left and hit the rubber wall before changing direction and moving toward the ranger. Once the rider passed the 150cm mark, we stopped collecting data and stopped the rider. This was repeated a total of ten times. 
+
+\indent The goal in this section is to observe that the velocity is constant, but also to compute the coefficient of restitution. This value is defined as:
+
+\begin{equation}
+    e = \frac{|\Vec{v_f|}}{\Vec{|v_i|}}
+\end{equation}
+
+\indent In each trial, we attempted to push the rider at a similar velocity. At the end of each trial, we used a linear fit on the graph of $\Vec{x}(t)$ vs. $t$. Given the relationship in equation (4), when $\Vec{a} = 0$, the slope of the linear fit graph would yield $\Vec{v}$. 
+\indent The graph begins with a positive slope as the rider moves away, and is negative on the return trip. The position slope measured from the linear fit was recorded as the initial velocity, $v_i$, and the negative slope was recorded as the final velocity, $v_f$. The coefficient of restitution was then calculated using equation (5).\\
+
+
+
+\begin{center}
+    \subsection{Part II. Measuring Gravitational Acceleration}
+\end{center} 
+
+\indent In this part of the experiment, we used the same basic setup as mentioned above. The relationship of acceleration, gravity, and other parameters is displayed in figure 2. Using angle relations, we can deduce the following:
+
+\begin{equation*}
+    a_x = (\frac{g}{L})h    
+\end{equation*}
+\indent Where $a_x$ is the acceleration parallel to the track, $g$ is acceleration due to gravity, $L$ is the length of the track, and $h$ is the elevation of the track. This relationship is determined by noticing that the angle, $\theta$ of the track has the relationship $sin(\theta) = h/L$.
+\indent Five shims were provided for this experiment. In each round of data collection, a different number of shims was placed under the right foot (ranging from 1 to 5 shims). The thickness was recorded using a caliper. After the shims were placed under the foot, the rider was placed at the 150 cm mark and released. Right before the rider collided with the elastic bumper, data collection began. The rider would ride back up the ramp and then tend down the ramp again. Data collection concluded right before the second collision. The highest point achieved after collision, $l_2$, was recorded by calculating the difference between the highest and lowest point on the position graph. A linear fit was taken on the velocity graph to measure $a_x$, as proved from relationship equation (3). Additionally, the velocity after the first collision, $v_1$, was recorded off the velocity graph as well.
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+\caption{Coordinate system to find equation (6) [1]}
+\centering
+\includegraphics[width=0.3\textwidth]{"Angle for Grav".png}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+\caption{Table setup for part 2 [1]}
+\centering
+\includegraphics[width=0.3\textwidth]{"Angled Tables".png}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+\section{Results \& Analysis}
+\begin{center}
+    \subsection{Part I. Constant Velocity}
+\end{center} 
+Using standard statistical calculations for weighted mean and standard error, we find the following.\\
+\\
+\begin{equation}
+    \Bar{e}_w = 0.824
+\end{equation}
+\begin{equation}
+        \sigma_{\Bar{e}_w} = 0.00098
+\end{equation}
+\indent In a perfectly elastic scenario, we would expect $ \Bar{e}_w$ to be 1. Since it is not, energy must be lost in the collision through heat, or the energy must be lost on the track by friction.\\
+\begin{figure}[h]
+\caption{Graph of initial velocity and coefficient of restitution. The red line is initial velocity. The blue is the coefficient of restitution.}
+\centering
+\includegraphics[width=0.5\textwidth]{"Graph A".png}
+\end{figure}
+\indent Notice from the figure above that there seems to be some implicit relationship between $e$ and $v_i$. As $v_i$ increased, $e$ decreased. This would imply that at higher initial speeds, there was more energy loss. We assume this is from higher friction, as friction and velocity are directly correlated. While this was not our goal, it seems that in our lab setup, initial velocity was directly proportional to energy loss, and therefore most likely to friction. This means our track was not entirely frictionless, which is quite logical. This loss of energy should be taken account when interpreting other results as well.
+\\
+\indent Notice also that the standard mean and standard deviation are:
+\begin{equation}
+    \Bar{e} = 0.843
+\end{equation}
+\begin{equation}
+    \sigma_{\Bar{e}} = 0.00399
+\end{equation}
+While the average itself is quite close to the weighted average, the standard deviation is much larger than the standard error.\\
+\\
+\begin{center}
+    \subsection{Part II. Measuring Gravitational Acceleration}
+\end{center} 
+\indent Again, using standard statistical calculations, we found that:
+\begin{center}
+\begin{tabular}{ c |c c c c c| }
+& 1 shim & 2 shims & 3 shims & 4 shims & 5 shims \\
+\hline
+$\Bar{a}_x$ & 0.00899 &	0.0203 & 0.0339 & 0.0522 & 0.0678 \\
+$\sigma_{\Bar{a}_x} & 0.000139	& 0.000282 & 0.000259 & 0.000343 & 0.000397$ \\
+\end{tabular}
+\end{center}\\
+\\
+\indent The following figures on the next page graph $\Bar{a}_x$ vs. $h$. One has error bars and the other has a best fit line. \\
+\indent From fitting a best fit curve, we came across the following data.\\
+
+\begin{center}
+\begin{tabular}{ c c c c }
+Slope & Slope Standard Error (SE)& Y-intercept & Y-i SE \\
+\hline
+9.69 & 1.103 & -0.00571 & 0.00540 
+\end{tabular}
+\end{center}
+
+\begin{figure}[h]
+\caption{Graph of $\Bar{a}_x$ vs. $h$ with error bars.}
+\centering
+\includegraphics[width=0.5\textwidth]{"Error bar graph".png}
+\end{figure}\\
+\begin{figure}[h]
+\caption{Graph of $\Bar{a}_x$ vs. $h$ with best fit line.}
+\centering
+\includegraphics[width=0.5\textwidth]{"Fit Graph".png}
+\end{figure}
+
+Before calculating $g$, it is worth noting that the error from the LINEST function is quite big. However, we shall find that our $g$ value comes quite close. \\
+\\
+We know that:
+\begin{equation}
+    a_x = \frac{g}{L}h
+\end{equation}
+In our experiment, $L = 1.0m$, $h$ varies, and we know $\Bar{a}_x$.\\
+To estimate $g$, we shall set the fit line to the right side of this equality.
+
+\begin{equation}
+    mh + b = \frac{g}{L}h
+\end{equation}
+\\
+Then, we get that:
+
+\begin{equation}
+    L*(m+b/h)= (g)
+\end{equation}
+Using $h = \Bar{h}$, and solving for $g$ yields $g = 10.947$.\\
+\\
+$g$ is dependent only on $h$ and $a_x$ as variables. Thus, so calculate $\sigma _g$, we use our standard statistical formula to get:\\
+$\sigma _g ^2 = \sigma_m ^2 + (1/\Bar{h})^2 * \sigma_h ^2$.\\
+\indent This yields $sigma_g = 1.217$.\\
+\\
+Thus, our measurement overshoots gravity by quite a bit. Since our error is large as well, we are only 0.94$sigma_g$ away. If we attempted to calculate $g$ from every trial using equation (10), we would find that, when using a small number of shims (1 or 2), the $g$ value is quite off. For example, at 1 shim, our average $g$, calculates using equation (10) for each individual trial, is about 7.019, whereas the equivalent for 5 shims is 9.370. Additionally, the variance was quite large at times. \\
+\indent In this portion of the experiment, there were a lot of moments for error - a human had to start and stop data collection, meaning the tops and bottoms of arcs could have been misinformed for best fit lines. Additionally, the data suggests that LINEST may have allowed for too much error, and a better calculation option exists.\\
+\indent Since we are aware of energy loss from friction, it is highly possible that these results were under high variance due to friction and energy loss. Additionally, for the lowest shim levels, poor centering could have a great effect.\\
+\indent The biggest concern is the large $\sigma_g$ value. In another iteration of the experiment, one could aim to decrease this value by running over a shorter distance (rather than from 150cm). The current hypothesis is that energy loss lead to these variations, so reducing potential for energy loss would counteract this.\\
+\\
+Finally, we calculate friction. The equation:
+\begin{equation}
+    (1/2)mv_1^2 + W_{nonconservative}= mgl_2sin(\theta)
+\end{equation}
+is our work-energy theorem equation. We then calculated:
+\begin{equation}
+    \Delta = \frac{v_1^2}{2a_xl_x} - 1
+\end{equation}
+to find energy lost through friction. 
+
+\begin{center}
+\begin{tabular}{ c |c c}
+Shims & Trial 1 & Trial 2 \\
+1 & -0.223& 	-0.46\\
+2& -0.125&	0.0320\\
+3& -0.0413&	-0.0869\\
+4& -0.0571&	-0.354\\
+5& -0.0551&	0.670\\
+\end{tabular}
+\end{center}
+
+The claim that friction and energy loss led to a lot of variance isn't entirely false, as the table above shows high variance in energy loss for our trials, and thus potentially varied effects.
+\section{Conclusion}
+\indent In conclusion, there was very high variance in the measurements for the constant acceleration portion of this experiment. We propose that this is due to variance in energy loss. The results in the first part of the experiment seem reasonably precise. Overall, keeping in mind the effects of friction, imperfect elasticity, and energy loss, the resulting values for the coefficient of restitution and the lack of precision for $g$ can be reconciled.
+
+
+
+
+\begin{thebibliography}{1}
+%Insert any references here
+\bibitem{IEEEhowto:kopka}
+1494 Physics Lab Manual. Department of Physics. Spring 2019 Edition
+
+\end{thebibliography}
+
+
+\end{document}

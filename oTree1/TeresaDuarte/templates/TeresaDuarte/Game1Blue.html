@@ -1,0 +1,75 @@
+{% extends "global/Page.html" %}
+{% load static otree %}
+
+
+{% block title %}
+	(BLUE) Game #1 - {-{player.round_number}-} out of {-{Constants.num_rounds}-}
+{% endblock %}
+
+{% block content %}
+<div class = "grid-container-box">
+</br>
+
+<div class ="row">
+	
+	<div class = "grid-column">
+		You are the <font color="blue">blue player</font>. </br>
+		Choose an action:</br>
+		
+		<form>
+ 			<input type="radio" id = "U_Action" name="Action" value="U" style="vertical-align: middle"> U </br>
+ 			<input type="radio" id = "M_Action" name="Action" value="M" style="vertical-align: middle"> M </br>
+ 			<input type="radio" id = "D_Action" name="Action" value="D" style="vertical-align: middle"> D
+		</form>
+		
+	</div>
+	
+	<div class ="grid-column">
+		<font color="blue">blue player</font> </br>
+		<img src="{% static "Teresa_Duarte_project/Game_1.jpg" %}" style = "width:90% ; height:90%" />
+	</div>	
+</div>
+
+</br>
+
+</div>
+
+</br>
+
+{% next_button %}
+
+<!-- Variable storage here -->
+<input type="hidden" name="BlueRoundChoice" id="ActionVar"/>
+
+{% endblock %}
+
+
+{% block styles %}
+    <link href="{% static "global/TDStyles.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+
+	var Action = document.getElementById("ActionVar");
+	
+	$('input[name="Action"]').on("click", function(e) {
+		console.log("Action option clicked");
+		if (document.getElementById("U_Action").checked){
+			console.log("	Take the U value");
+			Action.value = 'U';
+		}
+		if (document.getElementById("M_Action").checked){
+			console.log("	Take the M value");
+			Action.value = 'M';
+
+		}
+		if (document.getElementById("D_Action").checked){
+			console.log("	Take the D value");
+			Action.value = 'D';
+		}
+	});
+	
+</script>
+{% endblock %}

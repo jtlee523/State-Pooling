@@ -1,0 +1,93 @@
+Tree depth function
+depth, height, remove, add
+
+public add(value){
+	
+
+}
+
+
+public depth(){
+	
+	
+}
+
+
+tree height function:
+
+
+
+
+prove that a perfect binary tree has an odd number of nodes
+
+Prove nodes are 2^(k+1) - 1
+this must be odd
+
+
+
+
+Use induction to prove that the number of leaves in a binary tree of
+height H is at most 2^H.
+
+Most number of leaves is the perfect tree (because any other tree would not have two children)
+
+Base case:
+H = 0 is a single node
+2^(0) = 1 node
+
+H=1 on the second layer
+2^(1) = 2
+
+Let a height H tree have 2^H nodes.
+
+If we add another layer, then each of the botom 2^H nodes gets another 2 nods
+2(2^H) = 2^(h+1)
+
+QED
+
+
+
+
+se #4 to prove that a binary tree of height H has at most 2^(H+1) - 1
+nodes.
+
+H = 0
+2^(0+1)-1 = 1
+
+
+
+So assume a tree of height H has 2^(h+1) - 1 nodes
+	x
+V		V
+
+1 + 2(2^(h+1) - 1) 
+1 - 2 + 2^(h+1 + 1)
+
+^true
+QED
+
+
+
+Reconstruct a treee given a preorder and inorder
+
+PreOrder BACEDF
+InORDER CAEBFD
+
+				B
+			A			D
+		C		E		F
+		
+
+
+N Nodes, Log(N) Height
+
+With N nodes, the max height is N, and the least height is .... not sure
+1 + 2+ 2^2 + .. 2^k = N
+2^k = N - sum
+K = log(n-sum)
+
+
+
+
+
+

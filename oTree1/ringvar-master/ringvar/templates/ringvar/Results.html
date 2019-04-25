@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Thank you!
+{% endblock %}
+
+{% block content %}
+
+Total: {{ participant.payoff | c }}.
+
+{% comment %}
+    {% next_button %}
+{% endcomment %}
+
+{% endblock %}
+
+
+{% block styles %}
+    <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
+{% endblock %}
