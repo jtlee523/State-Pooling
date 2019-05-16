@@ -3,7 +3,7 @@
 
 
 {% block title %}
-	Task #2 - 1 out of 1
+	TASK 2 TEST
 {% endblock %}
 
 
@@ -92,39 +92,12 @@ Page attributes:
 
 </br>
 <div class = "grid-container2">
-	<div class = "row" style = "margin: 1px">
-		<div class = "columnSpacer" style="width: 43%"></div> <!-- teext centering for now -->
-			Pick an advisor
-		<div class = "columnSpacer" style="width: 40%"></div>
-	</div>
-	
-	
-	<div class = "row" style = "margin: 1px">
-
-	<div class = "columnSpacer"></div>
-	<div class = "columnSpacer"></div>
-			<div class ="ButtonColumn">
-				<form>
-  					<input type="radio" id = "LHS_check" name="Advisor" value="0" > 
-  				
-  			</div>
-	<div class = "columnSpacer"></div>
-	<div class = "columnSpacer"></div>
-	<div class = "columnSpacer"></div>
-	<div class = "columnSpacer"></div>
-  			<div class ="ButtonColumn">
-  				
-  					<input type="radio" id = "RHS_check" name="Advisor" value="1"> 
-				</form>
-			</div>	
-	
-	</div> <!-- closes row-->
 
 
 	<div class = "row">
 	
 		<div class = "columnSpacer"></div>
-		<div class = "partialBox">
+		<div class = "partialBox" id = "LHS_BOX">
 		<div class="rowS"></div>
 		
 			<div class ="row">
@@ -165,7 +138,7 @@ Page attributes:
 	
 		<div class = "columnSpacer"></div>
 	
-		<div class = "partialBox">
+		<div class = "partialBox" id = "RHS_BOX">
 		<div class="rowS"></div>
 		
 			<div class ="row">
@@ -217,7 +190,7 @@ Page attributes:
 
 </br> <!-- add breaks to lower to button -->
 </br>
-<input type="hidden" name="Advisor_VAR" id="Advisor_Val"/>
+
 {% next_button %}
 {% endblock %}
 
@@ -234,7 +207,19 @@ Page attributes:
 {% block scripts %}
 	<script>
 
+	var result = localStorage.getItem("StoredValAdvisor")
+	if (result == 0){
+		console.log('LHS was Chosen')
+		document.getElementById("RHS_BOX").innerHTML = "";
+	}
+
+	if (result == 1){
+		console.log('RHS was Chosen')
+		document.getElementById("LHS_BOX").innerHTML = "";
+	}
 	
+	
+		
 	/* FOR UPDATING THE INFO IN THE POINTS BOX */
 	var RedDiv = document.getElementById("RedBallInfo");
 	var RedNode = document.createElement("p");
@@ -260,25 +245,8 @@ Page attributes:
 	GrayNode.appendChild(GrayText);
 	GrayDiv.appendChild(GrayNode);
 	
-	var Advisor = document.getElementById("Advisor_Val");	
-	
-	$('input[name="Advisor"]').on("click", function(e) {
-		console.log("Choosing an advisor");
-		if (document.getElementById("LHS_check").checked){
-			console.log("	LHS! Take the 0 value");
-			Advisor.value = 0;
-			localStorage.setItem("StoredValAdvisor", Advisor.value );
-			console.log("VALUE IS: " + localStorage.getItem("StoredValAdvisor"));
-		}
-		if (document.getElementById("RHS_check").checked){
-			console.log("	RHS! Take the 1 value");
-			Advisor.value = 1;
-			localStorage.setItem("StoredValAdvisor", Advisor.value );
-			console.log("VALUE IS: " + localStorage.getItem("StoredValAdvisor"));
-		}
-    
-	});
 
+	
 
 	
 	</script>

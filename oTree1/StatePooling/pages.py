@@ -19,14 +19,24 @@ class Task1_PageGREEN(Page):
 class Task1_PageYELLOW(Page):
 	pass	
 	
+class Task1_PageRainbow(Page):
+	pass		
 	
 class Test(Page):
     pass
 
 class Task2_Page1(Page):
+	form_model = 'player'
+	form_fields=['Advisor_VAR']
 	pass	
 
-class Task2_Page2(Page):
+class Task2_PageLHS(Page):
+	pass
+	
+class Task2_PageRHS(Page):
+	pass	
+	
+class Task2_PageSELECTED(Page):
 	pass	
 	
 class ResultsWaitPage(WaitPage):
@@ -39,12 +49,16 @@ class Results(Page):
     pass
 
 
-
 page_sequence = [
-	Task2_Page2,
 	Task2_Page1,
+	Task2_PageSELECTED,
+	Task2_PageRHS,	
 	Task1_Page1,
 	Task1_PageRED,
 	Task1_PageGREEN,
 	Task1_PageYELLOW,
+	Task1_PageRainbow,
+	
+
 ]
+

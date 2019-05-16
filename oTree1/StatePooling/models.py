@@ -50,6 +50,7 @@ class Player(BasePlayer):
 	Var4 = models.IntegerField()
 	Var5 = models.IntegerField()
 	Var6 = models.IntegerField()
+	Advisor_VAR = models.IntegerField()
 	
 	RedPoints = models.FloatField()
 	YellowPoints = models.FloatField()
