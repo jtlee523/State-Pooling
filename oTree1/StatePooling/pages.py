@@ -52,7 +52,6 @@ class Results(Page):
 page_sequence = [
 	Task2_Page1,
 	Task2_PageSELECTED,
-	Task2_PageRHS,	
 	Task1_Page1,
 	Task1_PageRED,
 	Task1_PageGREEN,
