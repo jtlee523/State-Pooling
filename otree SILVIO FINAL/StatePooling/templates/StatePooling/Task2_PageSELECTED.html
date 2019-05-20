@@ -2,8 +2,10 @@
 {% load static otree %}
 
 
+
+
 {% block title %}
-	TASK 2 TEST
+	Task 2 - Advisor Picked
 {% endblock %}
 
 
@@ -11,30 +13,26 @@
 
 
 {% block content %}
+
 <!--
 Page attributes:
 - One container with the follow:
 	3 colored balls and point values
 	gray urn point value
 	
-- radio buttons
-	Choice without extra questions
+- Split box that displays left or right hand side advisor choice
+
+- Radio button choice depending on if the advisor says white or black
 	
-	Is it red
-		yes
-		no
-	
-	yellow
-		yes
-		no
-	
-	green
-		yes
-		no
-		
-				NOTE!!! I don't think we have data collection on the folored pages yet
 -->
-<!-- This container is for the images -->
+
+
+
+
+
+
+<!-- ############################################################ -->
+<!-- This container is for the images of the balls and the points.-->
 <div class = "grid-container">
 <div class = "row"> <!-- probably a way to clean this up later -->
 
@@ -86,11 +84,22 @@ Page attributes:
 	</div>
 </div> <!-- closes row -->
 </div> <!--closes container -->
+<!-- ############################################################ -->
+
+
+
 
 
 
 
 </br>
+
+
+
+
+
+<!-- ############################################################ -->
+<!-- This is for the LHS and RHS boxes. only one text node will show-->
 <div class = "grid-container2">
 
 
@@ -180,10 +189,22 @@ Page attributes:
 	</div>
 
 </div>
+<!-- ############################################################ -->
+
+
+
+
+
 
 </br>
 
 
+
+
+
+
+<!-- ############################################################ -->
+<!-- Container for the radio buttons for "if the advisor says..." -->
 <div class = "grid-container">
 <div class = "row"> 
 <div class="columnSpacer" style="width: 49%">What would you choose ...</div>
@@ -210,9 +231,9 @@ Page attributes:
 		<div class = "buttonMid">
 			<div class = "textCenter">
 			<form>
-				<input type="radio" id = "Q1_0" name="q1" value="0" > 
+				<input type="radio" id = "White_Colored" name="White_Decision" value="0" > 
 				|
- 				<input type="radio" id = "Q1_1" name="q1" value="1"> 
+ 				<input type="radio" id = "White_Gray" name="White_Decision" value="1"> 
 			</form>
 			</div>
 		</div>
@@ -232,40 +253,117 @@ Page attributes:
 		<div class = "buttonMid">
 			<div class = "textCenter">
 			<form>
-				<input type="radio" id = "Q1_0" name="q1" value="0" > 
+				<input type="radio" id = "Black_Colored" name="Black_Decision" value="0" > 
 				|
- 				<input type="radio" id = "Q1_1" name="q1" value="1"> 
+ 				<input type="radio" id = "Black_Gray" name="Black_Decision" value="1"> 
 			</form>
 			</div>
 		</div>
 </div> <!--closes row-->
 
 </div>
+<!-- ############################################################ -->
+
+
+
+
+
+
+
+
+
+<!-- add breaks to lower to button -->
+</br>
+</br>
+</br>
+</br>
 </br>
 
 
-</br>
-</br>
 
-</br> <!-- add breaks to lower to button -->
-</br>
+
+<!-- Hidden variable storage -->
+<!--
+	Python names: Advisor_Says(COLOR)
+	HTML Names: Advisor_S(COLOR INITIAL)
+	Javascript Name: Advisor_Says(COLOR) 
+	
+	The related variables are in the radio buttons above.
+		White_Decision
+		Black_Decision
+ -->
+<input type="hidden" name="Advisor_SaysWhite" id="Advisor_SW"/>
+<input type="hidden" name="Advisor_SaysBlack" id="Advisor_SB"/>
 
 {% next_button %}
 {% endblock %}
 
-
-
-
-
-{% block styles %}
+{% block styles %} <!-- Loading two CSS files for style -->
     <link href="{% static "global/StatePooling.css" %}" rel="stylesheet">
     <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
 {% endblock %}
 
 
 {% block scripts %}
-	<script>
+	<script>	
+	/* ==================== */
+	/* Says(COLOR) variables for storage.  */
+	var Advisor_SaysWhite = document.getElementById("Advisor_SW");	
+	var Advisor_SaysBlack = document.getElementById("Advisor_SB");		
+	
+	/* Function below will console.log changes when radio buttons are clicked*/
+	$('input[name="White_Decision"]').on("click", function(e) {
+		console.log("If the advisor says white...");
+		if (document.getElementById("White_Colored").checked){
+			console.log("	pick colored! Take the 0 value");
+			Advisor_SaysWhite.value = 0;
+		}
+		if (document.getElementById("White_Gray").checked){
+			console.log("	pick gray! Take the 1 value");
+			Advisor_SaysWhite.value = 1;
+		}
+    
+	});
+	
+	$('input[name="Black_Decision"]').on("click", function(e) {
+		console.log("If the advisor says black...");
+		if (document.getElementById("Black_Colored").checked){
+			console.log("	pick colored! Take the 0 value");
+			Advisor_SaysBlack.value = 0;
+		}
+		if (document.getElementById("Black_Gray").checked){
+			console.log("	pick gray! Take the 1 value");
+			Advisor_SaysBlack.value = 1;
+		}
+    
+	});
+	
+	/* =========Advisor variable storage ====== */
+	var Advisor = document.getElementById("Advisor_Val");	
+	/* StoredValAdvisor is the javascript variable that is locally stored */
+	/* Dynamically updating the StoredValAdvisor variable. */
+	$('input[name="Advisor"]').on("click", function(e) {
+		console.log("Choosing an advisor");
+		if (document.getElementById("LHS_check").checked){
+			console.log("	LHS! Take the 0 value");
+			Advisor.value = 0;
+			localStorage.setItem("StoredValAdvisor", Advisor.value );
+			console.log("VALUE IS: " + localStorage.getItem("StoredValAdvisor"));
+		}
+		if (document.getElementById("RHS_check").checked){
+			console.log("	RHS! Take the 1 value");
+			Advisor.value = 1;
+			localStorage.setItem("StoredValAdvisor", Advisor.value );
+			console.log("VALUE IS: " + localStorage.getItem("StoredValAdvisor"));
+		}
+    
+	});
+	/* =========================== */
+	
 
+	
+	/* Dynamically retrieving the StoredValAdvisor */
+	/* StoredValAdvisor is the javascript variable that is locally stored on the previous page. */
 	var result = localStorage.getItem("StoredValAdvisor")
 	if (result == 0){
 		console.log('LHS was Chosen')
@@ -276,7 +374,7 @@ Page attributes:
 		console.log('RHS was Chosen')
 		document.getElementById("LHS_BOX").innerHTML = "";
 	}
-	
+	/* ==================== */
 	
 		
 	/* FOR UPDATING THE INFO IN THE POINTS BOX */
@@ -303,10 +401,6 @@ Page attributes:
 	var GrayText = document.createTextNode({{player.GrayPoints}} + ' points'); //this puts the value of the element in
 	GrayNode.appendChild(GrayText);
 	GrayDiv.appendChild(GrayNode);
-	
-
-	
-
-	
+	/* ==================================== */
 	</script>
 {% endblock %}

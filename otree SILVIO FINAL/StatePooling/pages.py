@@ -2,7 +2,16 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
-#FOR TASK 1
+
+"""
+TASK 1
+
+Task 1 has 5 pages
+------------------
+-Task1_Page1: First page the players see.
+-Task1_Page(ADVISORTYPE): (x4)
+	These pages are advisor specific. 
+"""
 
 class Task1_Page1(Page):
 	form_model = 'player'
@@ -22,8 +31,21 @@ class Task1_PageYELLOW(Page):
 class Task1_PageRainbow(Page):
 	pass		
 	
-class Test(Page):
-    pass
+
+
+"""
+Task 2
+
+Task 2 has 2 pages
+-------------------
+-Task2_Page1: This page uses Advisor_VAR. On this page the player selects which advisor they want, and this data
+	is stored as a 0 or 1 in the variable Advisor_VAR
+	
+-Task2_PageSELECTED:
+	This page depends on the Advisor_VAR from Page1. It loads the LHS or RHS bpx depending on
+	what the player selected.
+
+"""
 
 class Task2_Page1(Page):
 	form_model = 'player'
@@ -32,18 +54,16 @@ class Task2_Page1(Page):
 	
 	
 class Task2_PageSELECTED(Page):
+	form_model = 'player'
+	form_fields=['Advisor_SaysWhite', 'Advisor_SaysBlack']
 	pass	
+
 	
-class ResultsWaitPage(WaitPage):
-
-    def after_all_players_arrive(self):
-        pass
 
 
-class Results(Page):
-    pass
-
-
+"""
+I may separate the page sequence into two instances.
+"""
 page_sequence = [
 	Task2_Page1,
 	Task2_PageSELECTED,

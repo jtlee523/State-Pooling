@@ -1,0 +1,407 @@
+
+/*
+Let us, for now, make full row height 100px, width 75% of the page
+*/
+
+/* Centering text */
+.textCenter {
+    text-align: center;
+    /* border: 3px solid green; */
+}
+
+.textR {
+    text-indent: 70%;
+    /* border: 3px solid green; */
+}
+
+.textRSmall {
+    text-indent: 1%;
+    /* border: 3px solid green; */
+}
+    .hidden {
+        display: none;
+    }
+
+/* grids used for centering, etc. */
+/* Clear floats after the columns */
+    .grid-container{
+   		margin: 0 auto;
+        width: 60%; 
+        max-width: 1000px;      
+        outline: 3px solid black;
+    }
+
+	.grid-container2{
+   		margin: 0 auto;
+        width: 60%; 
+        max-width: 1000px;      
+    }
+    .rowS{
+    	height: 30px;
+    }
+    .partialBox{
+    	width: 42.5%;
+    	outline: 3px solid black;
+    }
+    
+    .whiteBar{
+    	height: 40px;
+    	width: 40%;
+    	background: white;
+    }
+    
+    .blackBar{
+    	height: 40px;
+    	width: 60%;
+    	background: black;
+    }
+    
+    .labelBox{
+    	width: 20%;
+    }
+    
+    .textPercent{
+    	width: 10%;
+    }
+    
+    .percentBox{
+    	outline:  3px solid darkgray;
+    	width: 55%;
+    	background: black;
+    }
+    
+    .evenColumn{
+    	width: 35%;
+    }
+
+    
+    .columnSpacer{
+    	width: 5%
+    }
+    
+    .buttonMid{
+    	width: 10%;
+    }
+    
+    .TextColumn{
+    	width: 70%;
+    	/*outline: 3px solid green; /*this will be changes later. just for now*/
+    	
+    }
+    
+    .ButtonColumn{
+    	width: 30%;
+    	/*outline: 3px solid red;*/
+    }
+	
+	.mainbox{
+		width:50%
+	}
+	
+	.threeballbox{
+		width: 90%;
+		height: 85%;
+		/*outline: 3px solid green;*/
+		margin-top: 5%;
+  		margin-bottom: 5%;
+  		margin-right: 5%;
+  		margin-left: 5%;
+		/*background: silver;*/
+	
+	}
+	
+	.greyballbox{
+		width: 90%;
+		height: 85%;
+		/*outline: 3px solid green;*/
+		margin-top: 5%;
+  		margin-bottom: 5%;
+  		margin-right: 5%;
+  		margin-left: 5%;
+		/*background: silver;*/
+	
+	}
+	
+	.border-line{
+		border: solid;
+		border-width: 1px;
+	}
+	
+    /*-- our cleafix hack -- */ 
+    .row:before,
+    .row:after {
+        content:"";
+        height: 30px; /* -- alter this to change height -- */
+        display: table ;
+        clear:both;
+    }
+
+        
+   	.spacer:before,
+    .spacer:after {
+        content:"";
+        height: 5px; /* -- alter this to change height -- */
+        display: table ;
+        clear:both;
+    }
+
+   	.RHSspacer:before, /* -- there must be a better way!!! --*/
+    .RHSspacer:after {
+        content:"";
+        height: 30px; /* -- alter this to change height -- */
+        display: table ;
+        clear:both;
+     /*--   outline: 1px solid blue; */
+    }
+
+    [class*='block-'] {
+        float: left; 
+        min-height: 1px;     
+        /*-- our gutter -- */
+        /*padding: 12px; 
+        background-color: red;*/  /* this is just for padding */
+    }
+	
+	
+	
+	/* these are the main prior blocks. for now, 25, 50, 25 */
+	
+    .block-red{ 
+    	width: 25%; 
+    	height: 50%;
+    	background-color: red;
+    }
+        
+    .block-yellow{
+    	width: 50%; 
+    	height: 50%;
+    	background-color: yellow;
+    }
+    	
+    .block-green{
+    	width: 25%;
+    	height: 50%; 
+    	background-color: green;   
+    }
+    
+    
+    
+    
+    
+    /* These are the real data blocks that appear on the feedback screen. for now, it is fixed */
+    
+    .block-redReal{ 
+    	width: 40%; 
+    	height: 50%;
+    	background-color: red;
+    }
+        
+    .block-yellowReal{
+    	width: 50%;
+    	height: 50%; 
+    	background-color: yellow;
+    }
+    	
+    .block-greenReal{
+    	width: 10%; 
+    	height: 50%;
+    	background-color: green;   
+    }
+    
+    
+    
+    /* These are the dynamic blocks that move based on what the user inputs. */
+    
+    .block-red-dynamic{ 
+    	width: 25%; 
+    	height: 50%;
+    	background-color: red;
+    }
+        
+    .block-yellow-dynamic{
+    	width: 50%; 
+    	height: 50%;
+    	background-color: yellow;
+    }
+    	
+    .block-green-dynamic{
+    	width: 25%; 
+    	height: 50%;
+    	background-color: green;   
+    }
+        
+        
+         
+    .block-ballProbR{
+    	width: 30%; 
+    	outline: 5px solid red;
+    }
+    
+    .block-ballProbY{
+    	width: 30%; 
+    	outline: 5px solid yellow;
+    }
+    
+    .block-ballProbG{
+    	width: 30%; 
+    	outline: 5px solid green;
+    }
+    
+     .block-BPspace{
+    	width: 5%
+    }
+       
+    .block-ballProbStandardBlock{
+    	width: 30%; 
+    }
+    
+    
+    
+    .block-ballReturn{
+    	width: 30%;
+    	outline: 5px solid black;
+    }
+
+    .block-FeedbackSpacer{
+    	width: 40%;
+    }
+    
+    .block-ballReturn2{ /*-- for some reason the size changes in the feedback page, so I have this --*/
+    	width: 20%;
+    	outline: 5px solid black;
+    }
+    
+	.block-SpaceBar{
+		width: 100%;
+		height: 30%;
+	}    
+	.block-TotalBar{
+		width: 100%;
+		height: 30%;
+		background-color: white;
+	}
+	
+
+	
+	
+	
+	
+	
+	/*-- THIS IS FOR THE BLACK AND WHITE PROBABILITY BARS --*/
+	
+	.block-RedB{
+		width: 80%;
+		height: 30%;
+		background-color: black;
+	}
+	
+	.block-RedW{
+		width: 20%;
+		height: 30%;
+		background-color: white;
+	}
+	.block-YellowB{
+		width: 50%;
+		height: 30%;
+		background-color: black;
+	}
+	
+	.block-YellowW{
+		width: 50%;
+		height: 30%;
+		background-color: white;
+	}
+	
+	.block-GreenB{
+		width: 20%;
+		height: 30%;
+		background-color: black;
+	}
+	
+	.block-GreenW{
+		width: 80%;
+		height: 30%;
+		background-color: white;
+	}    
+
+
+
+
+
+
+
+
+    .outline, .outline *{
+        outline: 1px solid black; 
+    }
+
+    /*-- some extra column content styling --*/
+    [class*='block-'] > p {
+     padding: 0;
+     margin: 0;
+     text-align: center; 
+     color: black; 
+    }
+    
+    
+    .circle {
+ 	 display: block;
+ 	 background: black;
+ 	 border-radius: 50%;
+ 	 height: 40px;
+ 	 width: 40px;
+ 	 margin: auto;
+ 	 
+	}
+
+    .Rcircle {
+ 	 display: block;
+ 	 background: red;
+ 	 border-radius: 50%;
+ 	 height: 40px;
+ 	 width: 40px;
+ 	 /*margin: auto; */
+ 	 margin-left: 30%
+ 	 
+	}
+	
+    .Ycircle {
+ 	 display: block;
+ 	 background: yellow;
+ 	 border-radius: 50%;
+ 	 height: 40px;
+ 	 width: 40px;
+ 	 /*margin: auto; */
+ 	 margin-left: 30%
+ 	 
+	}
+	
+    .Gcircle {
+ 	 display: block;
+ 	 background: rgb(0,230,0);
+ 	 border-radius: 50%;
+ 	 height: 40px;
+ 	 width: 40px;
+ 	 /*margin: auto; */
+ 	 margin-left: 30%
+ 	 
+	}
+	
+    .Greycircle {
+ 	 display: block;
+ 	 background: lightgray;
+ 	 border-radius: 50%;
+ 	 height: 40px;
+ 	 width: 40px;
+	 margin-left: 30%
+ 	 
+	}
+
+	
+#bar {
+    height:100px;
+    width:100px;
+    background-color:red;
+    margin:auto; /* horizontal centering, within containing element */
+    border:1px solid green;
+}
