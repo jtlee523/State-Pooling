@@ -111,23 +111,23 @@ Page attributes:
 		
 			<div class ="row">
 				<div class = "labelBox"><div class = "Rcircle"></div></div>
-				<div class = "textPercent">20%</div>
+				<div id="LHS_RedPercent" class = "textPercent"></div>
 				<div class = "percentBox">
-					<div class = "whiteBar" style="width: 30%"></div>
+					<div id="LHS_RedBar" class = "whiteBar"></div>
 				
 				</div>
-				<div class = "textPercent">80%</div>
+				<div id="LHS_RedPercent2" class = "textPercent"></div>
 			
 			</div>
 			<div class="rowS"></div>
 			
 			<div class ="row">
 				<div class = "labelBox"><div class = "Ycircle"></div></div>
-				<div class = "textPercent">60%</div>
+				<div id="LHS_YellowPercent" class = "textPercent"></div>
 				<div class = "percentBox">
-					<div class = "whiteBar" style="width: 60%"></div>
+					<div id = "LHS_YellowBar" class = "whiteBar"></div>
 				</div>
-				<div class = "textPercent">40%</div>
+				<div id="LHS_YellowPercent2" class = "textPercent"></div>
 			
 			</div>
 			<div class="rowS"></div>
@@ -135,11 +135,11 @@ Page attributes:
 			
 			<div class ="row">
 				<div class = "labelBox"><div class = "Gcircle"></div></div>
-				<div class = "textPercent">20%</div>
+				<div id="LHS_GreenPercent" class = "textPercent"></div>
 				<div class = "percentBox">
-					<div class = "whiteBar" style="width: 30%"></div>
+					<div id="LHS_GreenBar" class = "whiteBar"></div>
 				</div>
-				<div class = "textPercent">80%</div>
+				<div id="LHS_GreenPercent2" class = "textPercent"></div>
 			
 			</div>
 			<div class="rowS"></div>
@@ -152,37 +152,38 @@ Page attributes:
 		
 			<div class ="row">
 				<div class = "labelBox"><div class = "Rcircle"></div></div>
-				<div class = "textPercent">40%</div>
+				<div id="RHS_RedPercent" class = "textPercent"></div>
 				<div class = "percentBox">
-					<div class = "whiteBar"></div>
+					<div id="RHS_RedBar" class = "whiteBar"></div>
 				</div>
-				<div class = "textPercent">60%</div>
+				<div id="RHS_RedPercent2" class = "textPercent"></div>
 			
 			</div>
 			<div class="rowS"></div>
 			
 			<div class ="row">
 				<div class = "labelBox"><div class = "Ycircle"></div></div>
-				<div class = "textPercent">40%</div>
+				<div id="RHS_YellowPercent" class = "textPercent"></div>
 				<div class = "percentBox">
-					<div class = "whiteBar"></div>
+					<div id="RHS_YellowBar" class = "whiteBar"></div>
 				</div>
-				<div class = "textPercent">60%</div>
+				<div id="RHS_YellowPercent2" class = "textPercent"></div>
 			
 			</div>
 			<div class="rowS"></div>
 			
 			<div class ="row">
 				<div class = "labelBox"><div class = "Gcircle"></div></div>
-				<div class = "textPercent">40%</div>
+				<div id="RHS_GreenPercent" class = "textPercent"></div>
 				<div class = "percentBox">
-					<div class = "whiteBar"></div>
+					<div id="RHS_GreenBar" class = "whiteBar"></div>
 				</div>
-				<div class = "textPercent">60%</div>
+				<div id="RHS_GreenPercent2" class = "textPercent"></div>
 			
 			</div>
+			<div class="rowS"></div>
+			
 		</div>
-		<div class="rowS"></div>
 		<div class = "columnSpacer"></div>
 
 	
@@ -369,11 +370,100 @@ Page attributes:
 	if (result == 0){
 		console.log('LHS was Chosen')
 		document.getElementById("RHS_BOX").innerHTML = "";
+		
+		/* The next segment of code updates the LHS bars */
+		var LHS_RedDiv= document.getElementById("LHS_RedPercent");
+		var LHS_RedNode = document.createElement("p");
+		var LHS_RedText = document.createTextNode({{player.LHSAdvisor_Red}} + '%'); //this puts the value of the element in
+		LHS_RedNode.appendChild(LHS_RedText);
+		LHS_RedDiv.appendChild(LHS_RedNode);
+		var LHS_RedBar = document.getElementById("LHS_RedBar"); //This part takes the white bar and makes it the right length
+		LHS_RedBar.setAttribute('style', 'width: ' + ({{player.LHSAdvisor_Red}}) + '%'); //sets the attribute value
+			
+		var LHS_YellowDiv= document.getElementById("LHS_YellowPercent");
+		var LHS_YellowNode = document.createElement("p");
+		var LHS_YellowText = document.createTextNode({{player.LHSAdvisor_Yellow}} + '%'); //this puts the value of the element in
+		LHS_YellowNode.appendChild(LHS_YellowText);
+		LHS_YellowDiv.appendChild(LHS_YellowNode);
+		var LHS_YellowBar = document.getElementById("LHS_YellowBar"); //This part takes the white bar and makes it the right length
+		LHS_YellowBar.setAttribute('style', 'width: ' + ({{player.LHSAdvisor_Yellow}}) + '%'); //sets the attribute value
+			
+		var LHS_GreenDiv= document.getElementById("LHS_GreenPercent");
+		var LHS_GreenNode = document.createElement("p");
+		var LHS_GreenText = document.createTextNode({{player.LHSAdvisor_Green}} + '%'); //this puts the value of the element in
+		LHS_GreenNode.appendChild(LHS_GreenText);
+		LHS_GreenDiv.appendChild(LHS_GreenNode);
+		var LHS_GreenBar = document.getElementById("LHS_GreenBar"); //This part takes the white bar and makes it the right length
+		LHS_GreenBar.setAttribute('style', 'width: ' + ({{player.LHSAdvisor_Green}}) + '%'); //sets the attribute value
+		
+	
+		var LHS_RedDiv2= document.getElementById("LHS_RedPercent2");
+		var LHS_RedNode2 = document.createElement("p");
+		var LHS_RedText2 = document.createTextNode((100-{{player.LHSAdvisor_Red}}) + '%'); //this puts the value of the element in
+		LHS_RedNode2.appendChild(LHS_RedText2);
+		LHS_RedDiv2.appendChild(LHS_RedNode2);		
+
+		var LHS_YellowDiv2= document.getElementById("LHS_YellowPercent2");
+		var LHS_YellowNode2 = document.createElement("p");
+		var LHS_YellowText2 = document.createTextNode((100-{{player.LHSAdvisor_Yellow}}) + '%'); //this puts the value of the element in
+		LHS_YellowNode2.appendChild(LHS_YellowText2);
+		LHS_YellowDiv2.appendChild(LHS_YellowNode2);
+		
+		var LHS_GreenDiv2= document.getElementById("LHS_GreenPercent2");
+		var LHS_GreenNode2 = document.createElement("p");
+		var LHS_GreenText2 = document.createTextNode((100-{{player.LHSAdvisor_Green}}) + '%'); //this puts the value of the element in
+		LHS_GreenNode2.appendChild(LHS_GreenText2);
+		LHS_GreenDiv2.appendChild(LHS_GreenNode2);
+		
 	}
 
 	if (result == 1){
 		console.log('RHS was Chosen')
 		document.getElementById("LHS_BOX").innerHTML = "";
+		
+		/* The next segment updates the RHS bars */
+		var RHS_RedDiv= document.getElementById("RHS_RedPercent");
+		var RHS_RedNode = document.createElement("p");
+		var RHS_RedText = document.createTextNode({{player.RHSAdvisor_Red}} + '%'); //this puts the value of the element in
+		RHS_RedNode.appendChild(RHS_RedText);
+		RHS_RedDiv.appendChild(RHS_RedNode);
+		var RHS_RedBar = document.getElementById("RHS_RedBar"); //This part takes the white bar and makes it the right length
+		RHS_RedBar.setAttribute('style', 'width: ' + ({{player.RHSAdvisor_Red}}) + '%'); //sets the attribute value
+
+		var RHS_YellowDiv= document.getElementById("RHS_YellowPercent");
+		var RHS_YellowNode = document.createElement("p");
+		var RHS_YellowText = document.createTextNode({{player.RHSAdvisor_Yellow}} + '%'); //this puts the value of the element in
+		RHS_YellowNode.appendChild(RHS_YellowText);
+		RHS_YellowDiv.appendChild(RHS_YellowNode);
+		var RHS_YellowBar = document.getElementById("RHS_YellowBar"); //This part takes the white bar and makes it the right length
+		RHS_YellowBar.setAttribute('style', 'width: ' + ({{player.RHSAdvisor_Yellow}}) + '%'); //sets the attribute value
+	
+		var RHS_GreenDiv= document.getElementById("RHS_GreenPercent");
+		var RHS_GreenNode = document.createElement("p");
+		var RHS_GreenText = document.createTextNode({{player.RHSAdvisor_Green}} + '%'); //this puts the value of the element in
+		RHS_GreenNode.appendChild(RHS_GreenText);
+		RHS_GreenDiv.appendChild(RHS_GreenNode);
+		var RHS_GreenBar = document.getElementById("RHS_GreenBar"); //This part takes the white bar and makes it the right length
+		RHS_GreenBar.setAttribute('style', 'width: ' + ({{player.RHSAdvisor_Green}}) + '%'); //sets the attribute value
+	
+	
+		var RHS_RedDiv2= document.getElementById("RHS_RedPercent2");
+		var RHS_RedNode2 = document.createElement("p");
+		var RHS_RedText2 = document.createTextNode((100-{{player.RHSAdvisor_Red}}) + '%'); //this puts the value of the element in
+		RHS_RedNode2.appendChild(RHS_RedText2);
+		RHS_RedDiv2.appendChild(RHS_RedNode2);
+
+		var RHS_YellowDiv2= document.getElementById("RHS_YellowPercent2");
+		var RHS_YellowNode2 = document.createElement("p");
+		var RHS_YellowText2 = document.createTextNode((100-{{player.RHSAdvisor_Yellow}}) + '%'); //this puts the value of the element in
+		RHS_YellowNode2.appendChild(RHS_YellowText2);
+		RHS_YellowDiv2.appendChild(RHS_YellowNode2);
+	
+		var RHS_GreenDiv2= document.getElementById("RHS_GreenPercent2");
+		var RHS_GreenNode2 = document.createElement("p");
+		var RHS_GreenText2 = document.createTextNode((100-{{player.RHSAdvisor_Green}}) + '%'); //this puts the value of the element in
+		RHS_GreenNode2.appendChild(RHS_GreenText2);
+		RHS_GreenDiv2.appendChild(RHS_GreenNode2);
 	}
 	/* ==================== */
 	
