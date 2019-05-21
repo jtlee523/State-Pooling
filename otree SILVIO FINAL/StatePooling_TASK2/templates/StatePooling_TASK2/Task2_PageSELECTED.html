@@ -1,29 +1,38 @@
 {% extends "global/Page.html" %}
 {% load static otree %}
 
+
+
+
 {% block title %}
-	Part 2 - Round {{player.round_number}} out of {{Constants.num_rounds}}
+	Task 2 - Advisor Picked Round {{player.round_number}} out of {{Constants.num_rounds}}
 {% endblock %}
 
 
+
+
+
 {% block content %}
+
 <!--
 Page attributes:
 - One container with the follow:
 	3 colored balls and point values
 	gray urn point value
 	
-- Two blocks for pick an advisor
-	A LHS and RHS box with bars that show their results per color	
+- Split box that displays left or right hand side advisor choice
 
-				NOTE!!! I don't think we have data collection on the folored pages yet
+- Radio button choice depending on if the advisor says white or black
+	
 -->
 
 
 
 
+
+
 <!-- ############################################################ -->
-<!-- This container is for the images -->
+<!-- This container is for the images of the balls and the points.-->
 <div class = "grid-container">
 <div class = "row"> <!-- probably a way to clean this up later -->
 
@@ -79,45 +88,25 @@ Page attributes:
 
 
 
+
+
+
+
 </br>
 
 
-<!-- ############################################################ -->
-<!-- two boxes that show the two advisors, including also the "Pick an advisor" line-->
-<div class = "grid-container2">
-	<div class = "row" style = "margin: 1px">
-		<div class = "columnSpacer" style="width: 43%"></div> <!-- teext centering for now -->
-			Pick an advisor
-		<div class = "columnSpacer" style="width: 40%"></div>
-	</div>
-	
-	
-	<div class = "row" style = "margin: 1px">
 
-	<div class = "columnSpacer"></div>
-	<div class = "columnSpacer"></div>
-			<div class ="ButtonColumn">
-				<form>
-  					<input type="radio" id = "LHS_check" name="Advisor" value="0" > 
-  				
-  			</div>
-	<div class = "columnSpacer"></div>
-	<div class = "columnSpacer"></div>
-	<div class = "columnSpacer"></div>
-	<div class = "columnSpacer"></div>
-  			<div class ="ButtonColumn">
-  				
-  					<input type="radio" id = "RHS_check" name="Advisor" value="1"> 
-				</form>
-			</div>	
-	
-	</div> <!-- closes row-->
+
+
+<!-- ############################################################ -->
+<!-- This is for the LHS and RHS boxes. only one text node will show-->
+<div class = "grid-container2">
 
 
 	<div class = "row">
 	
 		<div class = "columnSpacer"></div>
-		<div class = "partialBox">
+		<div class = "partialBox" id = "LHS_BOX">
 		<div class="rowS"></div>
 		
 			<div class ="row">
@@ -158,7 +147,7 @@ Page attributes:
 	
 		<div class = "columnSpacer"></div>
 	
-		<div class = "partialBox">
+		<div class = "partialBox" id = "RHS_BOX">
 		<div class="rowS"></div>
 		
 			<div class ="row">
@@ -198,8 +187,83 @@ Page attributes:
 
 	
 	</div>
+
 </div>
 <!-- ############################################################ -->
+
+
+
+
+
+
+</br>
+
+
+
+
+
+
+<!-- ############################################################ -->
+<!-- Container for the radio buttons for "if the advisor says..." -->
+<div class = "grid-container">
+<div class = "row"> 
+<div class="columnSpacer" style="width: 49%">What would you choose ...</div>
+		<div class="columnSpacer" style="width: 5.55%"></div>  <!--centering the color | gray -->
+		<div class = "buttonMid">
+			<div class = "textCenter">
+			Color | Gray
+			</div>
+		</div>
+</div>		
+
+<div class = "row"> <!-- probably a way to clean this up later -->
+<div class="columnSpacer"></div>
+<div class="columnSpacer"></div>
+<div class="columnSpacer"></div>
+		<div class="evenColumn">
+			<div class = "textCenter">
+			If the Advisor says "white"
+			</div>
+		</div>
+		
+		<div class="columnSpacer"></div>
+		
+		<div class = "buttonMid">
+			<div class = "textCenter">
+			<form>
+				<input type="radio" id = "White_Colored" name="White_Decision" value="0" > 
+				|
+ 				<input type="radio" id = "White_Gray" name="White_Decision" value="1"> 
+			</form>
+			</div>
+		</div>
+</div> <!--closes row-->
+<div class = "row"> <!-- probably a way to clean this up later -->
+<div class="columnSpacer"></div>
+<div class="columnSpacer"></div>
+<div class="columnSpacer"></div>
+		<div class="evenColumn">
+			<div class = "textCenter">
+			If the Advisor says "black"
+			</div>
+		</div>
+		
+		<div class="columnSpacer"></div>
+		
+		<div class = "buttonMid">
+			<div class = "textCenter">
+			<form>
+				<input type="radio" id = "Black_Colored" name="Black_Decision" value="0" > 
+				|
+ 				<input type="radio" id = "Black_Gray" name="Black_Decision" value="1"> 
+			</form>
+			</div>
+		</div>
+</div> <!--closes row-->
+
+</div>
+<!-- ############################################################ -->
+
 
 
 
@@ -212,27 +276,107 @@ Page attributes:
 </br>
 </br>
 </br>
-</br> 
+</br>
 </br>
 
+
+
+
 <!-- Hidden variable storage -->
-<!-- Note: name= is the python name, id is the html name-->
-<input type="hidden" name="Advisor_VAR" id="Advisor_Val"/>
+<!--
+	Python names: Advisor_Says(COLOR)
+	HTML Names: Advisor_S(COLOR INITIAL)
+	Javascript Name: Advisor_Says(COLOR) 
+	
+	The related variables are in the radio buttons above.
+		White_Decision
+		Black_Decision
+ -->
+<input type="hidden" name="Advisor_SaysWhite" id="Advisor_SW"/>
+<input type="hidden" name="Advisor_SaysBlack" id="Advisor_SB"/>
+
 {% next_button %}
 {% endblock %}
 
-
-
-
-
-{% block styles %}
+{% block styles %} <!-- Loading two CSS files for style -->
     <link href="{% static "global/StatePooling.css" %}" rel="stylesheet">
     <link href="{% static "global/mystyle.css" %}" rel="stylesheet">
 {% endblock %}
 
 
 {% block scripts %}
-	<script>
+	<script>	
+	/* ==================== */
+	/* Says(COLOR) variables for storage.  */
+	var Advisor_SaysWhite = document.getElementById("Advisor_SW");	
+	var Advisor_SaysBlack = document.getElementById("Advisor_SB");		
+	
+	/* Function below will console.log changes when radio buttons are clicked*/
+	$('input[name="White_Decision"]').on("click", function(e) {
+		console.log("If the advisor says white...");
+		if (document.getElementById("White_Colored").checked){
+			console.log("	pick colored! Take the 0 value");
+			Advisor_SaysWhite.value = 0;
+		}
+		if (document.getElementById("White_Gray").checked){
+			console.log("	pick gray! Take the 1 value");
+			Advisor_SaysWhite.value = 1;
+		}
+    
+	});
+	
+	$('input[name="Black_Decision"]').on("click", function(e) {
+		console.log("If the advisor says black...");
+		if (document.getElementById("Black_Colored").checked){
+			console.log("	pick colored! Take the 0 value");
+			Advisor_SaysBlack.value = 0;
+		}
+		if (document.getElementById("Black_Gray").checked){
+			console.log("	pick gray! Take the 1 value");
+			Advisor_SaysBlack.value = 1;
+		}
+    
+	});
+	
+	/* =========Advisor variable storage ====== */
+	var Advisor = document.getElementById("Advisor_Val");	
+	/* StoredValAdvisor is the javascript variable that is locally stored */
+	/* Dynamically updating the StoredValAdvisor variable. */
+	$('input[name="Advisor"]').on("click", function(e) {
+		console.log("Choosing an advisor");
+		if (document.getElementById("LHS_check").checked){
+			console.log("	LHS! Take the 0 value");
+			Advisor.value = 0;
+			localStorage.setItem("StoredValAdvisor", Advisor.value );
+			console.log("VALUE IS: " + localStorage.getItem("StoredValAdvisor"));
+		}
+		if (document.getElementById("RHS_check").checked){
+			console.log("	RHS! Take the 1 value");
+			Advisor.value = 1;
+			localStorage.setItem("StoredValAdvisor", Advisor.value );
+			console.log("VALUE IS: " + localStorage.getItem("StoredValAdvisor"));
+		}
+    
+	});
+	/* =========================== */
+	
+
+	
+	/* Dynamically retrieving the StoredValAdvisor */
+	/* StoredValAdvisor is the javascript variable that is locally stored on the previous page. */
+	var result = localStorage.getItem("StoredValAdvisor")
+	if (result == 0){
+		console.log('LHS was Chosen')
+		document.getElementById("RHS_BOX").innerHTML = "";
+	}
+
+	if (result == 1){
+		console.log('RHS was Chosen')
+		document.getElementById("LHS_BOX").innerHTML = "";
+	}
+	/* ==================== */
+	
+		
 	/* FOR UPDATING THE INFO IN THE POINTS BOX */
 	var RedDiv = document.getElementById("RedBallInfo");
 	var RedNode = document.createElement("p");
@@ -257,29 +401,6 @@ Page attributes:
 	var GrayText = document.createTextNode({{player.GrayPoints}} + ' points'); //this puts the value of the element in
 	GrayNode.appendChild(GrayText);
 	GrayDiv.appendChild(GrayNode);
-	/* ========================= */
-	
-	
-	/* =========Advisor variable storage ====== */
-	var Advisor = document.getElementById("Advisor_Val");	
-	/* StoredValAdvisor is the javascript variable that is locally stored */
-	/* Dynamically updating the StoredValAdvisor variable. */
-	$('input[name="Advisor"]').on("click", function(e) {
-		console.log("Choosing an advisor");
-		if (document.getElementById("LHS_check").checked){
-			console.log("	LHS! Take the 0 value");
-			Advisor.value = 0;
-			localStorage.setItem("StoredValAdvisor", Advisor.value );
-			console.log("VALUE IS: " + localStorage.getItem("StoredValAdvisor"));
-		}
-		if (document.getElementById("RHS_check").checked){
-			console.log("	RHS! Take the 1 value");
-			Advisor.value = 1;
-			localStorage.setItem("StoredValAdvisor", Advisor.value );
-			console.log("VALUE IS: " + localStorage.getItem("StoredValAdvisor"));
-		}
-    
-	});
-	/* =========================== */
+	/* ==================================== */
 	</script>
 {% endblock %}

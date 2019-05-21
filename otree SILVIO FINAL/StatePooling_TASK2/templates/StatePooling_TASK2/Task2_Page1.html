@@ -2,7 +2,7 @@
 {% load static otree %}
 
 {% block title %}
-	Part 2 - Round {{player.round_number}} out of {{Constants.num_rounds}}
+	Task #2 - Round {{player.round_number}} out of {{Constants.num_rounds}}
 {% endblock %}
 
 
@@ -122,7 +122,7 @@ Page attributes:
 		
 			<div class ="row">
 				<div class = "labelBox"><div class = "Rcircle"></div></div>
-				<div class = "textPercent">20%</div>
+				<div id="LHS_RedPercent" class = "textPercent"></div>
 				<div class = "percentBox">
 					<div class = "whiteBar" style="width: 30%"></div>
 				
@@ -134,7 +134,7 @@ Page attributes:
 			
 			<div class ="row">
 				<div class = "labelBox"><div class = "Ycircle"></div></div>
-				<div class = "textPercent">60%</div>
+				<div id="LHS_YellowPercent" class = "textPercent"></div>
 				<div class = "percentBox">
 					<div class = "whiteBar" style="width: 60%"></div>
 				</div>
@@ -146,7 +146,7 @@ Page attributes:
 			
 			<div class ="row">
 				<div class = "labelBox"><div class = "Gcircle"></div></div>
-				<div class = "textPercent">20%</div>
+				<div id="LHS_GreenPercent" class = "textPercent"></div>
 				<div class = "percentBox">
 					<div class = "whiteBar" style="width: 30%"></div>
 				</div>
@@ -163,7 +163,7 @@ Page attributes:
 		
 			<div class ="row">
 				<div class = "labelBox"><div class = "Rcircle"></div></div>
-				<div class = "textPercent">40%</div>
+				<div id="RHS_RedPercent" class = "textPercent"></div>
 				<div class = "percentBox">
 					<div class = "whiteBar"></div>
 				</div>
@@ -174,7 +174,7 @@ Page attributes:
 			
 			<div class ="row">
 				<div class = "labelBox"><div class = "Ycircle"></div></div>
-				<div class = "textPercent">40%</div>
+				<div id="RHS_YellowPercent" class = "textPercent"></div>
 				<div class = "percentBox">
 					<div class = "whiteBar"></div>
 				</div>
@@ -185,7 +185,7 @@ Page attributes:
 			
 			<div class ="row">
 				<div class = "labelBox"><div class = "Gcircle"></div></div>
-				<div class = "textPercent">40%</div>
+				<div id="RHS_GreenPercent" class = "textPercent"></div>
 				<div class = "percentBox">
 					<div class = "whiteBar"></div>
 				</div>
@@ -258,6 +258,53 @@ Page attributes:
 	GrayNode.appendChild(GrayText);
 	GrayDiv.appendChild(GrayNode);
 	/* ========================= */
+	
+	
+	
+	/* =====LHS AND RHS ADVISOR===== */
+	/* FOR UPDATING THE INFO FOR ADVISORS */
+	var LHS_RedDiv= document.getElementById("LHS_RedPercent");
+	var LHS_RedNode = document.createElement("p");
+	var LHS_RedText = document.createTextNode({{player.LHSAdvisor_Red}} + '%'); //this puts the value of the element in
+	LHS_RedNode.appendChild(LHS_RedText);
+	LHS_RedDiv.appendChild(LHS_RedNode);
+
+	var LHS_YellowDiv= document.getElementById("LHS_YellowPercent");
+	var LHS_YellowNode = document.createElement("p");
+	var LHS_YellowText = document.createTextNode({{player.LHSAdvisor_Yellow}} + '%'); //this puts the value of the element in
+	LHS_YellowNode.appendChild(LHS_YellowText);
+	LHS_YellowDiv.appendChild(LHS_YellowNode);
+	
+	var LHS_GreenDiv= document.getElementById("LHS_GreenPercent");
+	var LHS_GreenNode = document.createElement("p");
+	var LHS_GreenText = document.createTextNode({{player.LHSAdvisor_Green}} + '%'); //this puts the value of the element in
+	LHS_GreenNode.appendChild(LHS_GreenText);
+	LHS_GreenDiv.appendChild(LHS_GreenNode);
+	
+
+	var RHS_RedDiv= document.getElementById("RHS_RedPercent");
+	var RHS_RedNode = document.createElement("p");
+	var RHS_RedText = document.createTextNode({{player.RHSAdvisor_Red}} + '%'); //this puts the value of the element in
+	RHS_RedNode.appendChild(RHS_RedText);
+	RHS_RedDiv.appendChild(RHS_RedNode);
+
+	var RHS_YellowDiv= document.getElementById("RHS_YellowPercent");
+	var RHS_YellowNode = document.createElement("p");
+	var RHS_YellowText = document.createTextNode({{player.RHSAdvisor_Yellow}} + '%'); //this puts the value of the element in
+	RHS_YellowNode.appendChild(RHS_YellowText);
+	RHS_YellowDiv.appendChild(RHS_YellowNode);
+	
+	var RHS_GreenDiv= document.getElementById("RHS_GreenPercent");
+	var RHS_GreenNode = document.createElement("p");
+	var RHS_GreenText = document.createTextNode({{player.RHSAdvisor_Green}} + '%'); //this puts the value of the element in
+	RHS_GreenNode.appendChild(RHS_GreenText);
+	RHS_GreenDiv.appendChild(RHS_GreenNode);
+	
+	
+	
+	
+	
+	
 	
 	
 	/* =========Advisor variable storage ====== */

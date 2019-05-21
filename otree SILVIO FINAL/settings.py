@@ -18,12 +18,9 @@ SESSION_CONFIGS = [
     	'name': 'StatePooling',
         'display_name': "State Pooling Project",
         'num_demo_participants': 1,
-        'app_sequence': ['StatePooling'],
-        
+        'app_sequence': ['StatePooling_TASK2', 'StatePooling'],
     
-    
-    }
-    
+    },
     {
         'name': 'BeliefDivergence',
         'num_demo_participants': 1,
