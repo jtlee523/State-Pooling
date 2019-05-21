@@ -364,6 +364,7 @@ Page attributes:
 	
 	/* Dynamically retrieving the StoredValAdvisor */
 	/* StoredValAdvisor is the javascript variable that is locally stored on the previous page. */
+	/* This block wipes the LHS or RHS bo depending on the previous pages' result */
 	var result = localStorage.getItem("StoredValAdvisor")
 	if (result == 0){
 		console.log('LHS was Chosen')
