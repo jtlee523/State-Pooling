@@ -15,7 +15,16 @@ Task 1 has 5 pages
 
 class Task1_Page1(Page):
 	form_model = 'player'
-	form_fields=['Var6', 'Var0','Var1', 'Var2','Var3','Var4','Var5' ]
+	form_fields=['Choice_NoQ', 
+			'Choice_RedYes',
+			'Choice_RedNo', 
+			'Choice_YellowYes',
+			'Choice_YellowNo',
+			'Choice_GreenYes',
+			'Choice_GreenNo',
+			'Choice_RainbowRed',
+			'Choice_RainbowYellow',
+			'Choice_RainbowGreen']
 	pass
 
 

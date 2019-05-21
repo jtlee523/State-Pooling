@@ -20,7 +20,7 @@ DATA:
 
 
 class Constants(BaseConstants):
-	name_in_url = 'StatePooling'
+	name_in_url = 'StatePooling_TASK1'
 	data = [ [10, 30, 80, 60], 
 		[15, 35, 85, 55], 
 		[5, 25, 75, 50], 
@@ -55,25 +55,28 @@ class Group(BaseGroup):
 	
 class Player(BasePlayer):
 
-	Var0 = models.IntegerField()
-	Var1 = models.IntegerField()
-	Var2 = models.IntegerField()
-	Var3 = models.IntegerField()
-	Var4 = models.IntegerField()
-	Var5 = models.IntegerField()
-	Var6 = models.IntegerField()
+	
+	#Variable for choice without advisors
+	Choice_NoQ = models.IntegerField()
+	
+	#Choice_Color(Yes/No). These are for all the advisors
+	#i.e. Choice_RedYes is when you have the red advisor and the ball is red.
+	Choice_RedYes = models.IntegerField()
+	Choice_RedNo = models.IntegerField()
+
+	Choice_YellowYes = models.IntegerField()
+	Choice_YellowNo = models.IntegerField()
+	
+	Choice_GreenYes = models.IntegerField()
+	Choice_GreenNo = models.IntegerField()	
+	
+	# Variables for choices when the rainbow advisor says a color.
+	Choice_RainbowRed = models.IntegerField()
+	Choice_RainbowYellow = models.IntegerField()
+	Choice_RainbowGreen = models.IntegerField()
 	
 	
-	#===========TASK 2 VARIABLES============#
-	Advisor_VAR = models.IntegerField() #Variable that tracks LHS or RHS advisor
-	#0 if LHS, 1 if RHS
-	
-	Advisor_SaysWhite = models.IntegerField()
-	Advisor_SaysBlack = models.IntegerField()
-	#On page 2, player picks colored/gray depending on if the advisor says black/white
-	#0 if they pick colored, 1 if they pick gray.
-	
-	
+	# Variables for storing data that is displayed
 	RedPoints = models.FloatField()
 	YellowPoints = models.FloatField()
 	GreenPoints = models.FloatField()

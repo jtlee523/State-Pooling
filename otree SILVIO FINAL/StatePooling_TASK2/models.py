@@ -63,15 +63,6 @@ class Group(BaseGroup):
 	pass
 	
 class Player(BasePlayer):
-
-	Var0 = models.IntegerField()
-	Var1 = models.IntegerField()
-	Var2 = models.IntegerField()
-	Var3 = models.IntegerField()
-	Var4 = models.IntegerField()
-	Var5 = models.IntegerField()
-	Var6 = models.IntegerField()
-	
 	
 	#===========TASK 2 VARIABLES============#
 	Advisor_VAR = models.IntegerField() #Variable that tracks LHS or RHS advisor
