@@ -75,6 +75,57 @@ class Player(BasePlayer):
 	Choice_RainbowYellow = models.IntegerField()
 	Choice_RainbowGreen = models.IntegerField()
 	
+	#===For the red page variables
+	Red_Q0 = models.IntegerField()
+	Red_Q1 = models.IntegerField()
+	Red_Q2 = models.IntegerField()
+	Red_Q3 = models.IntegerField()
+	Red_Q4 = models.IntegerField()
+	Red_Q5 = models.IntegerField()
+	Red_Q6 = models.IntegerField()
+	Red_Q7 = models.IntegerField()
+	Red_Q8 = models.IntegerField()
+	Red_Q9 = models.IntegerField()
+	Red_Q10 = models.IntegerField()
+	
+	#===For the yellow page variables
+	Yellow_Q0 = models.IntegerField()
+	Yellow_Q1 = models.IntegerField()
+	Yellow_Q2 = models.IntegerField()
+	Yellow_Q3 = models.IntegerField()
+	Yellow_Q4 = models.IntegerField()
+	Yellow_Q5 = models.IntegerField()
+	Yellow_Q6 = models.IntegerField()
+	Yellow_Q7 = models.IntegerField()
+	Yellow_Q8 = models.IntegerField()
+	Yellow_Q9 = models.IntegerField()
+	Yellow_Q10 = models.IntegerField()
+	
+	#===For the green page variables
+	Green_Q0 = models.IntegerField()
+	Green_Q1 = models.IntegerField()
+	Green_Q2 = models.IntegerField()
+	Green_Q3 = models.IntegerField()
+	Green_Q4 = models.IntegerField()
+	Green_Q5 = models.IntegerField()
+	Green_Q6 = models.IntegerField()
+	Green_Q7 = models.IntegerField()
+	Green_Q8 = models.IntegerField()
+	Green_Q9 = models.IntegerField()
+	Green_Q10 = models.IntegerField()
+	
+	#===For the rainbow page variables
+	Rainbow_Q0 = models.IntegerField()
+	Rainbow_Q1 = models.IntegerField()
+	Rainbow_Q2 = models.IntegerField()
+	Rainbow_Q3 = models.IntegerField()
+	Rainbow_Q4 = models.IntegerField()
+	Rainbow_Q5 = models.IntegerField()
+	Rainbow_Q6 = models.IntegerField()
+	Rainbow_Q7 = models.IntegerField()
+	Rainbow_Q8 = models.IntegerField()
+	Rainbow_Q9 = models.IntegerField()
+	Rainbow_Q10 = models.IntegerField()
 	
 	# Variables for storing data that is displayed
 	RedPoints = models.FloatField()

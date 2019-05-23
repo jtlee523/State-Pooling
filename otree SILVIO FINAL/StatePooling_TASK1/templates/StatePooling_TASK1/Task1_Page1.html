@@ -248,9 +248,9 @@ Page attributes:
 			</div>
 			<div class ="ButtonColumn">
 				<form>
- 					 <input type="radio" id = "RainR_0" name="RainRed_no" value="0" > 
+ 					 <input type="radio" id = "RainR_0" name="RainRed" value="0" > 
  					 |
- 					 <input type="radio" id = "RainR_1" name="RainRed_yes" value="1"> 
+ 					 <input type="radio" id = "RainR_1" name="RainRed" value="1"> 
 				</form>
 			</div>	
 		</div> <!-- closes row-->
@@ -261,9 +261,9 @@ Page attributes:
 			</div>
 			<div class ="ButtonColumn">
 				<form>
-  					<input type="radio" id = "RainY_0" name="RainYellow_no" value="0" > 
+  					<input type="radio" id = "RainY_0" name="RainYellow" value="0" > 
   					|
-  					<input type="radio" id = "RainY_1" name="RainYellow_yes" value="1"> 
+  					<input type="radio" id = "RainY_1" name="RainYellow" value="1"> 
 				</form>
 			</div>	
 		</div> <!-- closes row-->
@@ -274,9 +274,9 @@ Page attributes:
 			</div>
 			<div class ="ButtonColumn">
 				<form>
-  					<input type="radio" id = "RainG_0" name="RainGreen_no" value="0" > 
+  					<input type="radio" id = "RainG_0" name="RainGreen" value="0" > 
   					|
-  					<input type="radio" id = "RainG_1" name="RainGreen_yes" value="1"> 
+  					<input type="radio" id = "RainG_1" name="RainGreen" value="1"> 
 				</form>
 			</div>	
 		</div> <!-- closes row--><!-- need to do variabls for ths-->
@@ -297,6 +297,9 @@ Page attributes:
 <input type="hidden" name="Choice_YellowNo" id="BallYellowNo_Val"/>
 <input type="hidden" name="Choice_GreenYes" id="BallGreenYes_Val"/>
 <input type="hidden" name="Choice_GreenNo" id="BallGreenNo_Val"/>
+<input type="hidden" name="Choice_RainbowRed" id="Rainbow_RedVal"/>
+<input type="hidden" name="Choice_RainbowYellow" id="Rainbow_YellowVal"/>
+<input type="hidden" name="Choice_RainbowGreen" id="Rainbow_GreenVal"/>
 
 {% next_button %}
 {% endblock %}
@@ -319,9 +322,14 @@ Page attributes:
 	var BYN = document.getElementById("BallYellowNo_Val");
 	var BGY = document.getElementById("BallGreenYes_Val");
 	var BGN = document.getElementById("BallGreenNo_Val");
+	
 	var NQchoice = document.getElementById("NoQuestionsChoice");
-
-	$('input[name="noQ"]').on("click", function(e) {
+	
+	var RainbowRed = document.getElementById("Rainbow_RedVal")
+	var RainbowYellow = document.getElementById("Rainbow_YellowVal")
+	var RainbowGreen = document.getElementById("Rainbow_GreenVal")
+	
+		$('input[name="noQ"]').on("click", function(e) {
 		console.log("noQ option clicked");
 		if (document.getElementById("NQ_0").checked){
 			console.log("	Take the 0 value");
@@ -335,7 +343,7 @@ Page attributes:
     
 	});
 	
-	$('input[name="ball_red_yes"]').on("click", function(e) {
+		$('input[name="ball_red_yes"]').on("click", function(e) {
 		console.log("Red Ball 'YES' option clicked");
 		if (document.getElementById("BRY_0").checked){
 			console.log("	Take the 0 value");
@@ -415,7 +423,47 @@ Page attributes:
     
 	});
 	
+		$('input[name="RainRed"]').on("click", function(e) {
+		console.log("Rainbow - Red option clicked");
+		if (document.getElementById("RainR_0").checked){
+			console.log("	Take the 0 value");
+			RainbowRed.value = 0;
+		}
+		if (document.getElementById("RainR_1").checked){
+			console.log("	Take the 1 value");
+			RainbowRed.value = 1;
 
+		}
+    
+	});
+	
+		$('input[name="RainYellow"]').on("click", function(e) {
+		console.log("Rainbow - Yellow option clicked");
+		if (document.getElementById("RainY_0").checked){
+			console.log("	Take the 0 value");
+			RainbowYellow.value = 0;
+		}
+		if (document.getElementById("RainY_1").checked){
+			console.log("	Take the 1 value");
+			RainbowYellow.value = 1;
+
+		}
+    
+	});
+
+		$('input[name="RainGreen"]').on("click", function(e) {
+		console.log("Rainbow - Green option clicked");
+		if (document.getElementById("RainG_0").checked){
+			console.log("	Take the 0 value");
+			RainbowGreen.value = 0;
+		}
+		if (document.getElementById("RainG_1").checked){
+			console.log("	Take the 1 value");
+			RainbowGreen.value = 1;
+
+		}
+    
+	});
 
 
 	/* FOR UPDATING THE INFO IN THE POINTS BOX */
