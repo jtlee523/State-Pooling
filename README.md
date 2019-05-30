@@ -28,6 +28,8 @@ Data is loaded in the class constants. In the variable, data, a list of lists is
 
 7-9: Advisor 2 percentages (RHS)
 
+Though I haven't figured out how to do this, if one could read a csv as a list of list with the same ordering as stated above, then that may be more effective.
+
 
 
 
