@@ -12,8 +12,6 @@ DATA:
 0-2: colored ball values: RED, YELLOW, GREEN
 3: GRAY ball values
 
-4-6: Advisor 1 percentages (LHS)
-7-9: Advisor 2 percentages (RHS)
 
 """
 

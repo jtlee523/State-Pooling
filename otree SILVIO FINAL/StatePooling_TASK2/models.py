@@ -40,7 +40,7 @@ class Subsession(BaseSubsession):
 		if self.round_number == 1: #if we are on the first round
 			self.session.vars['data'] = Constants.data.copy() #we record the data to something on self.
 		
-		
+		#This loop takes in values from the data above at the start of each session.
 		for p in self.get_players():
 			task1_data = p.current_data()
 			
@@ -65,7 +65,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 	
 	#===========TASK 2 VARIABLES============#
-	Advisor_VAR = models.IntegerField() #Variable that tracks LHS or RHS advisor
+	Advisor_LorR = models.IntegerField() #Variable that tracks LHS or RHS advisor
 	#0 if LHS, 1 if RHS
 	
 	Advisor_SaysWhite = models.IntegerField()
@@ -73,13 +73,14 @@ class Player(BasePlayer):
 	#On page 2, player picks colored/gray depending on if the advisor says black/white
 	#0 if they pick colored, 1 if they pick gray.
 	
-	
+	#The variables below are used for the HTML page, and are not that useful for data collection.
+	#These variables below will take in the values of the colored ball and gray ball (numbers 0 to 3)
 	RedPoints = models.FloatField()
 	YellowPoints = models.FloatField()
 	GreenPoints = models.FloatField()
 	GrayPoints = models.FloatField()
 	
-	
+	#These variables below will take the values of the LHS and RHS advisor percentages
 	LHSAdvisor_Red = models.FloatField()
 	LHSAdvisor_Yellow = models.FloatField()	
 	LHSAdvisor_Green = models.FloatField()
@@ -91,8 +92,5 @@ class Player(BasePlayer):
 		
 	def current_data(self):
 		return self.session.vars['data'][self.round_number-1] #returns a row of the data
-	
-    
-
 	
 	#colored is 0, gray is 1

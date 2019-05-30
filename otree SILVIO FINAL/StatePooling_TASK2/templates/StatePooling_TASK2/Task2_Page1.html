@@ -2,7 +2,7 @@
 {% load static otree %}
 
 {% block title %}
-	Task #2 - Round {{player.round_number}} out of {{Constants.num_rounds}}
+	Task #2 - Round {{player.round_number}} out of {{Constants.num_rounds}} - Advisor
 {% endblock %}
 
 
@@ -223,7 +223,7 @@ Page attributes:
 
 <!-- Hidden variable storage -->
 <!-- Note: name= is the python name, id is the html name-->
-<input type="hidden" name="Advisor_VAR" id="Advisor_Val"/>
+<input type="hidden" name="Advisor_LorR" id="Advisor_Val"/>
 {% next_button %}
 {% endblock %}
 
