@@ -69,3 +69,6 @@ The rest of the variables are used for data storage. [COLOR]points stores the va
 The page sequence is set as Task2_Page1, and Task2_PageSELECTED. Task2_Page1 is the first page of the experiment, constituting advisor choice. Task2_PageSELECTED is the page in which the player picks the urns.
 
 
+## Other
+
+There is an option to change font size. On the beginning of every page, there is a block <font size="+2"> The number can be adjusted to any value.
