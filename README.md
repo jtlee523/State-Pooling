@@ -24,14 +24,26 @@ Data is loaded in the class constants. In the variable, data, a list of lists is
 
 3: GRAY ball values
 
-4-6: Advisor 1 percentages (LHS)
+4-6: Advisor 1 percentages (LHS) (Red, Yellow, Green)
 
-7-9: Advisor 2 percentages (RHS)
+7-9: Advisor 2 percentages (RHS) (Red, Yellow, Green)
 
 Though I haven't figured out how to do this, if one could read a csv as a list of list with the same ordering as stated above, then that may be more effective.
 
+For example, [10, 30, 80, 60, 20, 30, 40, 25, 35, 45] gives us colored values for the balls as 10, 30, and 80. The value of the gray ball is 60. The left hand side advisor will have percentages 20, 30, and 40, and the right hand side advisor will have 25, 35, and 45.
 
+#### variables
+The document has comments indicating what each variable does in the Player class.
 
+##### Advisor_LorR
+On the first page of the task, the player has a choice from the left or right advisor. If the player picks the LEFT, the value is 0. If the player picks RIGHT, the value is1
+
+##### Advisor_SaysWhite, Advisor_SaysBlack
+On the 2nd page, the player has to choose what urn they would pick if the advisor says white, and if the advisor says black. The value is 0 if colored is picked, and 1 if gray is picked.
+
+##### Other variables 
+
+The rest of the variables are used for data storage. [COLOR]points stores the values of the first 0-3 numbers for the colored and gray balls. LHSadvisor_[COLOR] and RHSadvisor_[COLOR] store the numbers for the percentages.
 
 ### pages.py
 (To be finished)
